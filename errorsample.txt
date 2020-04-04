@@ -1,0 +1,48 @@
+ccコンパイラーエラーの特徴
+1 セミコロン抜け
+filename.c: In function 'main':
+filename.c:12:1: error: expected ';' before '}' token
+}
+^
+
+2 括弧閉がない時
+filename.c: In function 'main':
+filename.c:11:3: error: expected declaration or statement at end of input
+return 0;
+^~~~~~
+
+3 変数未定義
+filename.c: In function 'main':
+filename.c:8:17: error: 'e' undeclared (first use in this function)
+scanf("%lf", &e);
+^
+filename.c:8:17: note: each undeclared identifier is reported only once for each function it appears in
+
+4 ダブルクオーテーションがない時
+filename.c: In function 'main':
+filename.c:9:13: error: stray '\357' in program
+printf(sum：%lf\n", d + e);
+^
+5 全角エラー
+filename.c: In function 'main':
+filename.c:5:30: error: stray '\343' in program
+for(i=0; i<10; i++){　
+^
+filename.c:5:31: error: stray '\200' in program
+for(i=0; i<10; i++){　
+^
+filename.c:5:32: error: stray '\200' in program
+for(i=0; i<10; i++){　
+^
+
+6 打ち間違え関数
+filename.c: In function 'main':
+filename.c:8:10: warning: implicit declaration of function 'pintf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+pintf("\n");
+^~~~~
+printf
+/tmp/ccydTXBB.o: In function `main':
+filename.c:(.text+0x3e): undefined reference to `pintf'
+collect2: error: ld returned 1 exit status
+
+7 初期化エラーは出ない
