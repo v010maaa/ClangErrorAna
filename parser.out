@@ -1,0 +1,231 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    FUNCTION
+    ERROR
+    KAKKO
+    SHUTYOU
+    KIGO
+    ZENKAKU
+    ELSE
+
+Grammar
+
+Rule 0     S' -> all
+Rule 1     all -> function statement
+Rule 2     filename -> BUN KAKUTYOUSI SEMI
+Rule 3     filename -> NUMBER KAKUTYOUSI SEMI
+Rule 4     statement -> filename NUMBER CORON NUMBER CORON
+Rule 5     function -> filename kansu CORON
+Rule 6     bunbun -> BUN bunbun
+Rule 7     bunbun -> BUN
+Rule 8     kansu -> bunbun VAL
+
+Terminals, with rules where they appear
+
+BUN                  : 2 6 7
+CORON                : 4 4 5
+ELSE                 : 
+ERROR                : 
+FUNCTION             : 
+KAKKO                : 
+KAKUTYOUSI           : 2 3
+KIGO                 : 
+NUMBER               : 3 4 4
+SEMI                 : 2 3
+SHUTYOU              : 
+VAL                  : 8
+ZENKAKU              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+all                  : 0
+bunbun               : 6 8
+filename             : 4 5
+function             : 1
+kansu                : 5
+statement            : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . all
+    (1) all -> . function statement
+    (5) function -> . filename kansu CORON
+    (2) filename -> . BUN KAKUTYOUSI SEMI
+    (3) filename -> . NUMBER KAKUTYOUSI SEMI
+
+    BUN             shift and go to state 4
+    NUMBER          shift and go to state 5
+
+    all                            shift and go to state 1
+    function                       shift and go to state 2
+    filename                       shift and go to state 3
+
+state 1
+
+    (0) S' -> all .
+
+
+
+state 2
+
+    (1) all -> function . statement
+    (4) statement -> . filename NUMBER CORON NUMBER CORON
+    (2) filename -> . BUN KAKUTYOUSI SEMI
+    (3) filename -> . NUMBER KAKUTYOUSI SEMI
+
+    BUN             shift and go to state 4
+    NUMBER          shift and go to state 5
+
+    statement                      shift and go to state 6
+    filename                       shift and go to state 7
+
+state 3
+
+    (5) function -> filename . kansu CORON
+    (8) kansu -> . bunbun VAL
+    (6) bunbun -> . BUN bunbun
+    (7) bunbun -> . BUN
+
+    BUN             shift and go to state 10
+
+    kansu                          shift and go to state 8
+    bunbun                         shift and go to state 9
+
+state 4
+
+    (2) filename -> BUN . KAKUTYOUSI SEMI
+
+    KAKUTYOUSI      shift and go to state 11
+
+
+state 5
+
+    (3) filename -> NUMBER . KAKUTYOUSI SEMI
+
+    KAKUTYOUSI      shift and go to state 12
+
+
+state 6
+
+    (1) all -> function statement .
+
+    $end            reduce using rule 1 (all -> function statement .)
+
+
+state 7
+
+    (4) statement -> filename . NUMBER CORON NUMBER CORON
+
+    NUMBER          shift and go to state 13
+
+
+state 8
+
+    (5) function -> filename kansu . CORON
+
+    CORON           shift and go to state 14
+
+
+state 9
+
+    (8) kansu -> bunbun . VAL
+
+    VAL             shift and go to state 15
+
+
+state 10
+
+    (6) bunbun -> BUN . bunbun
+    (7) bunbun -> BUN .
+    (6) bunbun -> . BUN bunbun
+    (7) bunbun -> . BUN
+
+    VAL             reduce using rule 7 (bunbun -> BUN .)
+    BUN             shift and go to state 10
+
+    bunbun                         shift and go to state 16
+
+state 11
+
+    (2) filename -> BUN KAKUTYOUSI . SEMI
+
+    SEMI            shift and go to state 17
+
+
+state 12
+
+    (3) filename -> NUMBER KAKUTYOUSI . SEMI
+
+    SEMI            shift and go to state 18
+
+
+state 13
+
+    (4) statement -> filename NUMBER . CORON NUMBER CORON
+
+    CORON           shift and go to state 19
+
+
+state 14
+
+    (5) function -> filename kansu CORON .
+
+    BUN             reduce using rule 5 (function -> filename kansu CORON .)
+    NUMBER          reduce using rule 5 (function -> filename kansu CORON .)
+
+
+state 15
+
+    (8) kansu -> bunbun VAL .
+
+    CORON           reduce using rule 8 (kansu -> bunbun VAL .)
+
+
+state 16
+
+    (6) bunbun -> BUN bunbun .
+
+    VAL             reduce using rule 6 (bunbun -> BUN bunbun .)
+
+
+state 17
+
+    (2) filename -> BUN KAKUTYOUSI SEMI .
+
+    BUN             reduce using rule 2 (filename -> BUN KAKUTYOUSI SEMI .)
+    NUMBER          reduce using rule 2 (filename -> BUN KAKUTYOUSI SEMI .)
+
+
+state 18
+
+    (3) filename -> NUMBER KAKUTYOUSI SEMI .
+
+    BUN             reduce using rule 3 (filename -> NUMBER KAKUTYOUSI SEMI .)
+    NUMBER          reduce using rule 3 (filename -> NUMBER KAKUTYOUSI SEMI .)
+
+
+state 19
+
+    (4) statement -> filename NUMBER CORON . NUMBER CORON
+
+    NUMBER          shift and go to state 20
+
+
+state 20
+
+    (4) statement -> filename NUMBER CORON NUMBER . CORON
+
+    CORON           shift and go to state 21
+
+
+state 21
+
+    (4) statement -> filename NUMBER CORON NUMBER CORON .
+
+    $end            reduce using rule 4 (statement -> filename NUMBER CORON NUMBER CORON .)
+

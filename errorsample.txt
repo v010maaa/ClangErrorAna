@@ -41,8 +41,8 @@ filename.c:8:10: warning: implicit declaration of function 'pintf'; did you mean
 pintf("\n");
 ^~~~~
 printf
-/tmp/ccydTXBB.o: In function `main':
-filename.c:(.text+0x3e): undefined reference to `pintf'
+/tmp/ccydTXBB.o: In function 'main':
+filename.c:(.text+0x3e): undefined reference to 'pintf'
 collect2: error: ld returned 1 exit status
 
 7 初期化エラーは出ない
