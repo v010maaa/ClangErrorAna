@@ -1,36 +1,29 @@
 # -*- coding: utf-8 -*-
 import ply.lex as lex
+import sys
+args = sys.argv
 # x=input("文字入力\n").rstrip()
-x = '1911282.c: In function \'main\':\n1911282.c:12:1: error: expected \';\' before \'}\' token\n}'
-reserved = {
-'function' : 'FUNCTION',
-'error' : 'ERROR',
-'.c' : 'KAKUTYOUSI',
-'warning' : 'WARNING'
-}
 tokens = [
-    'BUN',
+    'WORDS',
     'NUMBER',
-    'SEMI',
     'CORON',
-    'VAL',
-    'KAKKO',
-    'SHUTYOU',
+    'ERROR',
+    'WARNING',
+    'POINT',
     'KIGO',
     'ZENKAKU',
     'ELSE'
-] + list(reserved.values())
-
-t_NUMBER = '[0-9]+'
-t_BUN = r'(?!function)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+'
-t_SEMI = ';'
+]
+t_NUMBER = '[0-9]+' #数字の１回以上の繰り返し
+t_WORDS = r'(?!function)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*'
+#t_SEMI = ';'
 t_ignore = ' \t　'
 t_CORON = ':'
-t_VAL = '\'[^\']+\''
-t_KAKKO = '[\}\{\]\[\(\)\"]'
-t_KIGO = '[\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/]'
-t_SHUTYOU = '\^[~]*'
-t_ZENKAKU = '[^\x01-\x7E]'
+#t_VAL = '\'[^\']+\''
+#t_KAKKO = '[\}\{\]\[\(\)\"]'
+#t_KIGO = '[\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/]'
+#t_SHUTYOU = '\^[~]*'
+#t_ZENKAKU = '[^\x01-\x7E]'
 
 def t_newline(t):
     r'\n+'
@@ -45,7 +38,7 @@ lexer = lex.lex()
 
 
 def lex_test():
-    path = 'sample/sample1.txt'
+    path = 'errorsample/sample' + args[1] + '.txt'
     f = open(path,'r')
     data = f.read()
     lexer.input(data)
@@ -56,5 +49,4 @@ def lex_test():
             break
         print(tok)
 if __name__ == '__main__':
-    print(x)
     lex_test()

@@ -53,9 +53,11 @@ def p_error(p):
     print('Syntax error in input!')
 
 def yacc_test():
-    print(x)
+    path = 'sample/sample1.txt'
+    f = open(path,'r')
+    data = f.read()
     parser = yacc.yacc()
-    result = parser.parse(x)
+    result = parser.parse(data)
     print('result: ', result)
 
 if __name__ == '__main__':
