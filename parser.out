@@ -1,1 +1,318 @@
 Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    KAIGYO
+    POINT
+    KIGO
+    KAKKO
+    SHUTYOU
+    ZENKAKU
+    ELSE
+
+Grammar
+
+Rule 0     S' -> contents
+Rule 1     contents -> placou sentence
+Rule 2     placou -> place couse
+Rule 3     place -> filename points
+Rule 4     filename -> WORDS TEN WORDS CORON
+Rule 5     points -> point point
+Rule 6     point -> NUMBER CORON
+Rule 7     couse -> WARNING CORON
+Rule 8     couse -> ERROR CORON
+Rule 9     couse -> NOTE CORON
+Rule 10    sentence -> bun
+Rule 11    sentence -> jukugo
+Rule 12    jukugo -> WORDS
+Rule 13    jukugo -> jukugo WORDS
+Rule 14    bun -> jukugo VAL
+Rule 15    bun -> bun jukugo
+
+Terminals, with rules where they appear
+
+CORON                : 4 6 7 8 9
+ELSE                 : 
+ERROR                : 8
+KAIGYO               : 
+KAKKO                : 
+KIGO                 : 
+NOTE                 : 9
+NUMBER               : 6
+POINT                : 
+SHUTYOU              : 
+TEN                  : 4
+VAL                  : 14
+WARNING              : 7
+WORDS                : 4 4 12 13
+ZENKAKU              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+bun                  : 10 15
+contents             : 0
+couse                : 2
+filename             : 3
+jukugo               : 11 13 14 15
+place                : 2
+placou               : 1
+point                : 5 5
+points               : 3
+sentence             : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . contents
+    (1) contents -> . placou sentence
+    (2) placou -> . place couse
+    (3) place -> . filename points
+    (4) filename -> . WORDS TEN WORDS CORON
+
+    WORDS           shift and go to state 5
+
+    contents                       shift and go to state 1
+    placou                         shift and go to state 2
+    place                          shift and go to state 3
+    filename                       shift and go to state 4
+
+state 1
+
+    (0) S' -> contents .
+
+
+
+state 2
+
+    (1) contents -> placou . sentence
+    (10) sentence -> . bun
+    (11) sentence -> . jukugo
+    (14) bun -> . jukugo VAL
+    (15) bun -> . bun jukugo
+    (12) jukugo -> . WORDS
+    (13) jukugo -> . jukugo WORDS
+
+    WORDS           shift and go to state 9
+
+    sentence                       shift and go to state 6
+    bun                            shift and go to state 7
+    jukugo                         shift and go to state 8
+
+state 3
+
+    (2) placou -> place . couse
+    (7) couse -> . WARNING CORON
+    (8) couse -> . ERROR CORON
+    (9) couse -> . NOTE CORON
+
+    WARNING         shift and go to state 11
+    ERROR           shift and go to state 12
+    NOTE            shift and go to state 13
+
+    couse                          shift and go to state 10
+
+state 4
+
+    (3) place -> filename . points
+    (5) points -> . point point
+    (6) point -> . NUMBER CORON
+
+    NUMBER          shift and go to state 16
+
+    points                         shift and go to state 14
+    point                          shift and go to state 15
+
+state 5
+
+    (4) filename -> WORDS . TEN WORDS CORON
+
+    TEN             shift and go to state 17
+
+
+state 6
+
+    (1) contents -> placou sentence .
+
+    $end            reduce using rule 1 (contents -> placou sentence .)
+
+
+state 7
+
+    (10) sentence -> bun .
+    (15) bun -> bun . jukugo
+    (12) jukugo -> . WORDS
+    (13) jukugo -> . jukugo WORDS
+
+    $end            reduce using rule 10 (sentence -> bun .)
+    WORDS           shift and go to state 9
+
+    jukugo                         shift and go to state 18
+
+state 8
+
+    (11) sentence -> jukugo .
+    (14) bun -> jukugo . VAL
+    (13) jukugo -> jukugo . WORDS
+
+    $end            reduce using rule 11 (sentence -> jukugo .)
+    VAL             shift and go to state 19
+    WORDS           shift and go to state 20
+
+
+state 9
+
+    (12) jukugo -> WORDS .
+
+    VAL             reduce using rule 12 (jukugo -> WORDS .)
+    WORDS           reduce using rule 12 (jukugo -> WORDS .)
+    $end            reduce using rule 12 (jukugo -> WORDS .)
+
+
+state 10
+
+    (2) placou -> place couse .
+
+    WORDS           reduce using rule 2 (placou -> place couse .)
+
+
+state 11
+
+    (7) couse -> WARNING . CORON
+
+    CORON           shift and go to state 21
+
+
+state 12
+
+    (8) couse -> ERROR . CORON
+
+    CORON           shift and go to state 22
+
+
+state 13
+
+    (9) couse -> NOTE . CORON
+
+    CORON           shift and go to state 23
+
+
+state 14
+
+    (3) place -> filename points .
+
+    WARNING         reduce using rule 3 (place -> filename points .)
+    ERROR           reduce using rule 3 (place -> filename points .)
+    NOTE            reduce using rule 3 (place -> filename points .)
+
+
+state 15
+
+    (5) points -> point . point
+    (6) point -> . NUMBER CORON
+
+    NUMBER          shift and go to state 16
+
+    point                          shift and go to state 24
+
+state 16
+
+    (6) point -> NUMBER . CORON
+
+    CORON           shift and go to state 25
+
+
+state 17
+
+    (4) filename -> WORDS TEN . WORDS CORON
+
+    WORDS           shift and go to state 26
+
+
+state 18
+
+    (15) bun -> bun jukugo .
+    (13) jukugo -> jukugo . WORDS
+
+  ! shift/reduce conflict for WORDS resolved as shift
+    $end            reduce using rule 15 (bun -> bun jukugo .)
+    WORDS           shift and go to state 20
+
+  ! WORDS           [ reduce using rule 15 (bun -> bun jukugo .) ]
+
+
+state 19
+
+    (14) bun -> jukugo VAL .
+
+    WORDS           reduce using rule 14 (bun -> jukugo VAL .)
+    $end            reduce using rule 14 (bun -> jukugo VAL .)
+
+
+state 20
+
+    (13) jukugo -> jukugo WORDS .
+
+    VAL             reduce using rule 13 (jukugo -> jukugo WORDS .)
+    WORDS           reduce using rule 13 (jukugo -> jukugo WORDS .)
+    $end            reduce using rule 13 (jukugo -> jukugo WORDS .)
+
+
+state 21
+
+    (7) couse -> WARNING CORON .
+
+    WORDS           reduce using rule 7 (couse -> WARNING CORON .)
+
+
+state 22
+
+    (8) couse -> ERROR CORON .
+
+    WORDS           reduce using rule 8 (couse -> ERROR CORON .)
+
+
+state 23
+
+    (9) couse -> NOTE CORON .
+
+    WORDS           reduce using rule 9 (couse -> NOTE CORON .)
+
+
+state 24
+
+    (5) points -> point point .
+
+    WARNING         reduce using rule 5 (points -> point point .)
+    ERROR           reduce using rule 5 (points -> point point .)
+    NOTE            reduce using rule 5 (points -> point point .)
+
+
+state 25
+
+    (6) point -> NUMBER CORON .
+
+    NUMBER          reduce using rule 6 (point -> NUMBER CORON .)
+    WARNING         reduce using rule 6 (point -> NUMBER CORON .)
+    ERROR           reduce using rule 6 (point -> NUMBER CORON .)
+    NOTE            reduce using rule 6 (point -> NUMBER CORON .)
+
+
+state 26
+
+    (4) filename -> WORDS TEN WORDS . CORON
+
+    CORON           shift and go to state 27
+
+
+state 27
+
+    (4) filename -> WORDS TEN WORDS CORON .
+
+    NUMBER          reduce using rule 4 (filename -> WORDS TEN WORDS CORON .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for WORDS in state 18 resolved as shift

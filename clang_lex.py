@@ -6,28 +6,34 @@ args = sys.argv
 tokens = [
     'WORDS',
     'NUMBER',
+    'KAIGYO',
     'CORON',
     'ERROR',
     'WARNING',
+    'NOTE',
     'POINT',
     'KIGO',
-    'ZENKAKU',
+    'VAL',
+    'TEN',
     'ELSE'
 ]
 t_NUMBER = '[0-9]+' #数字の１回以上の繰り返し
-t_WORDS = r'(?!function)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*'
+t_WORDS = '(?!error)(?!warning)(?!note)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*'
 #t_SEMI = ';'
+t_NOTE = 'note'
 t_ignore = ' \t　'
 t_CORON = ':'
-#t_VAL = '\'[^\']+\''
-#t_KAKKO = '[\}\{\]\[\(\)\"]'
-#t_KIGO = '[\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/]'
-#t_SHUTYOU = '\^[~]*'
+t_ERROR = 'error'
+t_WARNING = 'warning'
+t_VAL = '\'[^\']+\''
+t_TEN = '.'
+t_KIGO = '[\}\{\]\[\(\)\"\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/^]'
 #t_ZENKAKU = '[^\x01-\x7E]'
 
-def t_newline(t):
+def t_KAIGYO(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+    return t
 
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])

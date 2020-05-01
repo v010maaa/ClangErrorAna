@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BUN NUMBER SEMI CORON VAL KAKUTYOUSI FUNCTION ERROR KAKKO SHUTYOU KIGO ZENKAKU ELSEall : function statementfilename : BUN KAKUTYOUSI SEMI\n    | NUMBER KAKUTYOUSI SEMIstatement : filename NUMBER CORON NUMBER CORONfunction : filename kansu CORONbunbun : BUN bunbun\n    | BUNkansu : bunbun VAL'
+_lr_signature = 'WORDS NUMBER KAIGYO CORON ERROR WARNING NOTE POINT KIGO KAKKO SHUTYOU VAL ZENKAKU TEN ELSEcontents : placou sentenceplacou : place couseplace : filename pointsfilename : WORDS TEN WORDS CORONpoints : point pointpoint : NUMBER CORONcouse : WARNING CORON\n        | ERROR CORON\n        | NOTE CORONsentence : bun\n        | jukugo jukugo : WORDS\n        | jukugo WORDSbun : jukugo VAL\n        | bun jukugo'
     
-_lr_action_items = {'BUN':([0,2,3,10,14,17,18,],[4,4,10,10,-5,-2,-3,]),'NUMBER':([0,2,7,14,17,18,19,],[5,5,13,-5,-2,-3,20,]),'$end':([1,6,21,],[0,-1,-4,]),'KAKUTYOUSI':([4,5,],[11,12,]),'CORON':([8,13,15,20,],[14,19,-8,21,]),'VAL':([9,10,16,],[15,-7,-6,]),'SEMI':([11,12,],[17,18,]),}
+_lr_action_items = {'WORDS':([0,2,7,8,9,10,17,18,19,20,21,22,23,],[5,9,9,20,-12,-2,26,20,-14,-13,-7,-8,-9,]),'$end':([1,6,7,8,9,18,19,20,],[0,-1,-10,-11,-12,-15,-14,-13,]),'WARNING':([3,14,24,25,],[11,-3,-5,-6,]),'ERROR':([3,14,24,25,],[12,-3,-5,-6,]),'NOTE':([3,14,24,25,],[13,-3,-5,-6,]),'NUMBER':([4,15,25,27,],[16,16,-6,-4,]),'TEN':([5,],[17,]),'VAL':([8,9,20,],[19,-12,-13,]),'CORON':([11,12,13,16,26,],[21,22,23,25,27,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'all':([0,],[1,]),'function':([0,],[2,]),'filename':([0,2,],[3,7,]),'statement':([2,],[6,]),'kansu':([3,],[8,]),'bunbun':([3,10,],[9,16,]),}
+_lr_goto_items = {'contents':([0,],[1,]),'placou':([0,],[2,]),'place':([0,],[3,]),'filename':([0,],[4,]),'sentence':([2,],[6,]),'bun':([2,],[7,]),'jukugo':([2,7,],[8,18,]),'couse':([3,],[10,]),'points':([4,],[14,]),'point':([4,15,],[15,24,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -25,13 +25,20 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> all","S'",1,None,None,None),
-  ('all -> function statement','all',2,'p_all','clang_yacc.py',21),
-  ('filename -> BUN KAKUTYOUSI SEMI','filename',3,'p_filename','clang_yacc.py',24),
-  ('filename -> NUMBER KAKUTYOUSI SEMI','filename',3,'p_filename','clang_yacc.py',25),
-  ('statement -> filename NUMBER CORON NUMBER CORON','statement',5,'p_statement','clang_yacc.py',31),
-  ('function -> filename kansu CORON','function',3,'p_function','clang_yacc.py',35),
-  ('bunbun -> BUN bunbun','bunbun',2,'p_bunbun','clang_yacc.py',39),
-  ('bunbun -> BUN','bunbun',1,'p_bunbun','clang_yacc.py',40),
-  ('kansu -> bunbun VAL','kansu',2,'p_kansu','clang_yacc.py',44),
+  ("S' -> contents","S'",1,None,None,None),
+  ('contents -> placou sentence','contents',2,'p_contents','clang_yacc.py',25),
+  ('placou -> place couse','placou',2,'p_placecouse','clang_yacc.py',29),
+  ('place -> filename points','place',2,'p_place','clang_yacc.py',34),
+  ('filename -> WORDS TEN WORDS CORON','filename',4,'p_filename','clang_yacc.py',39),
+  ('points -> point point','points',2,'p_points','clang_yacc.py',48),
+  ('point -> NUMBER CORON','point',2,'p_point','clang_yacc.py',53),
+  ('couse -> WARNING CORON','couse',2,'p_couse','clang_yacc.py',58),
+  ('couse -> ERROR CORON','couse',2,'p_couse','clang_yacc.py',59),
+  ('couse -> NOTE CORON','couse',2,'p_couse','clang_yacc.py',60),
+  ('sentence -> bun','sentence',1,'p_sentence','clang_yacc.py',65),
+  ('sentence -> jukugo','sentence',1,'p_sentence','clang_yacc.py',66),
+  ('jukugo -> WORDS','jukugo',1,'p_jukugo','clang_yacc.py',70),
+  ('jukugo -> jukugo WORDS','jukugo',2,'p_jukugo','clang_yacc.py',71),
+  ('bun -> jukugo VAL','bun',2,'p_bun','clang_yacc.py',76),
+  ('bun -> bun jukugo','bun',2,'p_bun','clang_yacc.py',77),
 ]
