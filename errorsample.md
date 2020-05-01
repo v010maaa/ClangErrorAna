@@ -1,6 +1,15 @@
 ccコンパイラーエラーの特徴
 1. セミコロン抜け
 a. 
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+        printf('%d',a)
+	return 0;
+}
+```
 ```shell
 practice0.c:5:14: error: expected ';' after expression
 printf("jjj")
@@ -11,6 +20,15 @@ printf("jjj")
 
 2. 括弧閉がない時
 a. "\{" 
+
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+        printf("jjj");
+	return 0;
+```
 ```shell
 practice0.c:6:11: error: expected '}'
         return 0;
@@ -22,6 +40,15 @@ int main(void) {
 ```
 
 b. "("
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+        printf("jjj";
+	return 0;
+}
+```
 ```shell
 practice0.c:5:13: error: expected ')'
 printf("jjj";
@@ -34,6 +61,15 @@ printf("jjj";
 
 c. ""
 
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+        printf("jjj);
+	return 0;
+}
+```
 ```shell
 practice0.c:5:8: warning: missing terminating '"' character [-Winvalid-pp-token]
 printf("jjj);
@@ -48,38 +84,102 @@ int main(void) {
 1 warning and 2 errors generated.
 ```
 
-3 変数未定義
-filename.c: In function 'main':
-filename.c:8:17: error: 'e' undeclared (first use in this function)
-scanf("%lf", &e);
-^
-filename.c:8:17: note: each undeclared identifier is reported only once for each function it appears in
+d. 括弧シングルクオ
 
-4 ダブルクオーテーションがない時
-filename.c: In function 'main':
-filename.c:9:13: error: stray '\357' in program
-printf(sum：%lf\n", d + e);
-^
-5 全角エラー
-filename.c: In function 'main':
-filename.c:5:30: error: stray '\343' in program
-for(i=0; i<10; i++){　
-^
-filename.c:5:31: error: stray '\200' in program
-for(i=0; i<10; i++){　
-^
-filename.c:5:32: error: stray '\200' in program
-for(i=0; i<10; i++){　
-^
+```c
+#include <stdio.h>
 
-6 打ち間違え関数
-filename.c: In function 'main':
-filename.c:8:10: warning: implicit declaration of function 'pintf'; did you mean 'printf'? [-Wimplicit-function-declaration]
-pintf("\n");
-^~~~~
-printf
-/tmp/ccydTXBB.o: In function 'main':
-filename.c:(.text+0x3e): undefined reference to 'pintf'
-collect2: error: ld returned 1 exit status
+int main(void) {
+	// Write your code here
+        printf('jjj');
+	return 0;
+}
+```
 
-7 初期化エラーは出ない
+```shell
+practice0.c:5:8: warning: multi-character character constant [-Wmultichar]
+printf('jjj');
+       ^
+practice0.c:5:8: warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+printf('jjj');
+       ^~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+practice0.c:5:8: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+printf('jjj');
+       ^~~~~
+practice0.c:5:8: note: treat the string as an argument to avoid this
+printf('jjj');
+       ^
+       "%s", 
+3 warnings generated.
+timeout: the monitored command dumped core
+/bin/bash: line 1:     9 Segmentation fault      timeout 1 ./practice0 < practice0.in
+```
+3. 変数未宣言
+
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+	int a=0;
+        printf("%d",a);
+	return 0;
+}
+```
+
+```shell
+practice0.c:6:13: error: use of undeclared identifier 'a'
+printf("%d",a);
+            ^
+1 error generated.
+
+```
+
+4. 定義していない関数
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+	int a=0;
+	indd();
+printf("%d",a);
+	return 0;
+}
+```
+
+```shell
+practice0.c:6:2: warning: implicit declaration of function 'indd' is invalid in C99 [-Wimplicit-function-declaration]
+        indd();
+        ^
+1 warning generated.
+/tmp/practice0-5470a0.o: In function `main':
+practice0.c:(.text+0x4): undefined reference to `indd'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+5 打ち間違え関数
+
+```c
+#include <stdio.h>
+
+int main(void) {
+	// Write your code here
+	int a=0;
+        prinf("%d",a);
+	return 0;
+}
+```
+```shell
+practice0.c:6:1: warning: implicit declaration of function 'prinf' is invalid in C99 [-Wimplicit-function-declaration]
+prinf("%d",a);
+^
+1 warning generated.
+/tmp/practice0-2c82a3.o: In function `main':
+practice0.c:(.text+0xb): undefined reference to `prinf'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+

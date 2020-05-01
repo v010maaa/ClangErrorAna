@@ -1,0 +1,7 @@
+practice0.c:5:13: error: expected ')'
+printf("jjj";
+            ^
+practice0.c:5:7: note: to match this '('
+printf("jjj";
+      ^
+1 error generated.

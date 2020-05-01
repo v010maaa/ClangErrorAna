@@ -1,0 +1,5 @@
+practice0.c:5:14: error: expected ';' after expression
+printf("jjj")
+             ^
+             ;
+1 error generated.

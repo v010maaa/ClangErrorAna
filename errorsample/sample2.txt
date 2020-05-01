@@ -1,0 +1,7 @@
+practice0.c:6:11: error: expected '}'
+        return 0;
+                 ^
+practice0.c:3:16: note: to match this '{'
+int main(void) {
+               ^
+1 error generated.

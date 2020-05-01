@@ -1,0 +1,19 @@
+practice0.c:5:8: warning: multi-character character constant [-Wmultichar]
+printf('jjj');
+       ^
+practice0.c:5:8: warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+printf('jjj');
+       ^~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
+practice0.c:5:8: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
+printf('jjj');
+       ^~~~~
+practice0.c:5:8: note: treat the string as an argument to avoid this
+printf('jjj');
+       ^
+       "%s", 
+3 warnings generated.
+timeout: the monitored command dumped core
+/bin/bash: line 1:     9 Segmentation fault      timeout 1 ./practice0 < practice0.in

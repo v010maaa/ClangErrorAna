@@ -45,7 +45,7 @@ lexer = lex.lex()
 
 
 def lex_test():
-    path = 'errorsample.txt'
+    path = 'sample/sample1.txt'
     f = open(path,'r')
     data = f.read()
     lexer.input(data)

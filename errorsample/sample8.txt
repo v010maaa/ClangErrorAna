@@ -1,0 +1,7 @@
+practice0.c:6:1: warning: implicit declaration of function 'prinf' is invalid in C99 [-Wimplicit-function-declaration]
+prinf("%d",a);
+^
+1 warning generated.
+/tmp/practice0-2c82a3.o: In function `main':
+practice0.c:(.text+0xb): undefined reference to `prinf'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

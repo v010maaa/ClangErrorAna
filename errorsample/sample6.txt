@@ -1,0 +1,4 @@
+practice0.c:6:13: error: use of undeclared identifier 'a'
+printf("%d",a);
+            ^
+1 error generated.

@@ -1,0 +1,11 @@
+practice0.c:5:8: warning: missing terminating '"' character [-Winvalid-pp-token]
+printf("jjj);
+       ^
+practice0.c:5:8: error: expected expression
+practice0.c:7:2: error: expected '}'
+}
+ ^
+practice0.c:3:16: note: to match this '{'
+int main(void) {
+               ^
+1 warning and 2 errors generated.

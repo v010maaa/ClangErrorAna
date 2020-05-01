@@ -1,0 +1,7 @@
+practice0.c:6:2: warning: implicit declaration of function 'indd' is invalid in C99 [-Wimplicit-function-declaration]
+        indd();
+        ^
+1 warning generated.
+/tmp/practice0-5470a0.o: In function `main':
+practice0.c:(.text+0x4): undefined reference to `indd'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
