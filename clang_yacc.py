@@ -117,7 +117,6 @@ def p_bun(p):
         p[0] = p[1]
     print('bun:' + p[0])
 
-
 def p_filename(p):
     '''filename : jukugo TEN jukugo CORON'''
     if(p[3]=='c'):
@@ -130,12 +129,13 @@ def p_filename(p):
 def p_jukugo(p):
     '''jukugo : WORDS
         | KIGO
-        | jukugo KIGO
-        | jukugo WORDS
-        | jukugo TEN
+        | KIGO jukugo
+        | NUMBER
+        | WORDS jukugo
+        | jukugo TEN 
         | jukugo VAL
         | NUMBER note
-        | jukugo NUMBER
+        | NUMBER jukugo
         | jukugo note
         | jukugo CORON'''
     if(len(p)==3):
