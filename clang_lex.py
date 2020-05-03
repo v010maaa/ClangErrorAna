@@ -11,7 +11,8 @@ tokens = [
     'ERROR',
     'WARNING',
     'NOTE',
-    'POINT',
+    'RKAKU',
+    'LKAKU',
     'KIGO',
     'VAL',
     'TEN',
@@ -27,7 +28,9 @@ t_ERROR = 'error'
 t_WARNING = 'warning'
 t_VAL = '\'[^\']+\''
 t_TEN = '.'
-t_KIGO = '[\}\{\]\[\(\)\"\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/^]'
+t_KIGO = '[\}\{\(\)\"\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/^]'
+t_LKAKU = '\['
+t_RKAKU = '\]'
 #t_ZENKAKU = '[^\x01-\x7E]'
 
 def t_KAIGYO(t):

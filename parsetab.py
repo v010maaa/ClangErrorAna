@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'WORDS NUMBER KAIGYO CORON ERROR WARNING NOTE POINT KIGO KAKKO SHUTYOU VAL ZENKAKU TEN ELSEcontents : placou sentenceplacou : place couseplace : filename pointsfilename : WORDS TEN WORDS CORONpoints : point pointpoint : NUMBER CORONcouse : WARNING CORON\n        | ERROR CORON\n        | NOTE CORONsentence : bun\n        | jukugo jukugo : WORDS\n        | jukugo WORDSbun : jukugo VAL\n        | bun jukugo'
+_lr_signature = 'WORDS NUMBER KAIGYO CORON ERROR WARNING NOTE RKAKU LKAKU KIGO VAL TEN ELSEall : allbeforeallbefore : lines\n        | lines allbefore\n    lines : main\n        | lines line\n    main : placecouse sentence\n        | main KAIGYOplacecouse : place couseplace : filename pointspoints : point pointpoint : NUMBER CORONcouse : note CORONline : sentence KAIGYO\n        | sentencesentence : bun\n        | sentence warning\n        | sentence sentencewarning : LKAKU bun RKAKUbun :\n        | jukugo\n        | bun jukugofilename : jukugo TEN jukugo CORONjukugo : WORDS\n        | KIGO\n        | jukugo KIGO\n        | jukugo WORDS\n        | jukugo TEN\n        | jukugo VAL\n        | NUMBER note\n        | jukugo NUMBER\n        | jukugo note\n        | jukugo CORONnote : NOTE\n        | ERROR\n        | WARNING'
     
-_lr_action_items = {'WORDS':([0,2,7,8,9,10,17,18,19,20,21,22,23,],[5,9,9,20,-12,-2,26,20,-14,-13,-7,-8,-9,]),'$end':([1,6,7,8,9,18,19,20,],[0,-1,-10,-11,-12,-15,-14,-13,]),'WARNING':([3,14,24,25,],[11,-3,-5,-6,]),'ERROR':([3,14,24,25,],[12,-3,-5,-6,]),'NOTE':([3,14,24,25,],[13,-3,-5,-6,]),'NUMBER':([4,15,25,27,],[16,16,-6,-4,]),'TEN':([5,],[17,]),'VAL':([8,9,20,],[19,-12,-13,]),'CORON':([11,12,13,16,26,],[21,22,23,25,27,]),}
+_lr_action_items = {'WORDS':([0,3,4,5,8,9,10,13,14,15,16,17,18,19,20,22,23,24,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,48,49,],[9,9,-4,9,31,-23,-24,-5,9,9,31,-7,9,31,-8,-33,-34,-35,9,-32,-25,-26,-28,-30,-31,-29,9,-13,-16,9,31,9,-27,-12,31,9,-32,-18,]),'KIGO':([0,3,4,5,8,9,10,13,14,15,16,17,18,19,20,22,23,24,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,46,47,48,49,],[10,10,-4,10,30,-23,-24,-5,10,10,30,-7,10,30,-8,-33,-34,-35,10,-32,-25,-26,-28,-30,-31,-29,10,-13,-16,10,30,10,-27,-12,30,10,-32,-18,]),'NUMBER':([0,3,4,5,7,8,9,10,13,14,15,16,17,18,19,20,22,23,24,26,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,46,47,48,49,],[11,11,-4,11,27,33,-23,-24,-5,11,11,33,-7,11,33,-8,-33,-34,-35,27,11,-32,-25,-26,-28,-30,-31,-29,11,-13,-16,11,33,11,-27,-12,-11,33,11,-22,-18,]),'$end':([1,2,3,4,5,9,10,12,13,14,15,16,17,18,19,20,22,23,24,29,30,31,32,33,34,35,36,37,38,40,41,42,43,49,],[0,-1,-2,-4,-19,-23,-24,-3,-5,-14,-15,-20,-7,-6,-20,-8,-33,-34,-35,-32,-25,-26,-28,-30,-31,-29,-17,-13,-16,-21,-27,-27,-12,-18,]),'KAIGYO':([3,4,5,9,10,13,14,15,16,17,18,19,20,22,23,24,29,30,31,32,33,34,35,36,37,38,40,41,42,43,49,],[-19,17,-19,-23,-24,-5,37,-15,-20,-7,-6,-20,-8,-33,-34,-35,-32,-25,-26,-28,-30,-31,-29,-17,-13,-16,-21,-27,-27,-12,-18,]),'LKAKU':([3,4,5,9,10,13,14,15,16,17,18,19,20,22,23,24,29,30,31,32,33,34,35,36,37,38,40,41,42,43,49,],[-19,-4,-19,-23,-24,-5,39,-15,-20,-7,39,-20,-8,-33,-34,-35,-32,-25,-26,-28,-30,-31,-29,39,-13,-16,-21,-27,-27,-12,-18,]),'NOTE':([6,8,9,10,11,16,19,22,23,24,25,28,29,30,31,32,33,34,35,40,41,42,44,45,46,48,],[22,22,-23,-24,22,22,22,-33,-34,-35,-9,-27,-32,-25,-26,-28,-30,-31,-29,22,-27,-27,-10,-11,22,-32,]),'ERROR':([6,8,9,10,11,16,19,22,23,24,25,28,29,30,31,32,33,34,35,40,41,42,44,45,46,48,],[23,23,-23,-24,23,23,23,-33,-34,-35,-9,-27,-32,-25,-26,-28,-30,-31,-29,23,-27,-27,-10,-11,23,-32,]),'WARNING':([6,8,9,10,11,16,19,22,23,24,25,28,29,30,31,32,33,34,35,40,41,42,44,45,46,48,],[24,24,-23,-24,24,24,24,-33,-34,-35,-9,-27,-32,-25,-26,-28,-30,-31,-29,24,-27,-27,-10,-11,24,-32,]),'TEN':([8,9,10,16,19,22,23,24,28,29,30,31,32,33,34,35,40,41,42,46,48,],[28,-23,-24,41,42,-33,-34,-35,-27,-32,-25,-26,-28,-30,-31,-29,42,-27,-27,42,-32,]),'VAL':([8,9,10,16,19,22,23,24,28,29,30,31,32,33,34,35,40,41,42,46,48,],[32,-23,-24,32,32,-33,-34,-35,-27,-32,-25,-26,-28,-30,-31,-29,32,-27,-27,32,-32,]),'CORON':([8,9,10,16,19,21,22,23,24,27,28,29,30,31,32,33,34,35,40,41,42,46,48,],[29,-23,-24,29,29,43,-33,-34,-35,45,-27,-32,-25,-26,-28,-30,-31,-29,29,-27,-27,48,-32,]),'RKAKU':([9,10,19,22,23,24,29,30,31,32,33,34,35,39,40,42,47,],[-23,-24,-20,-33,-34,-35,-32,-25,-26,-28,-30,-31,-29,-19,-21,-27,49,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'contents':([0,],[1,]),'placou':([0,],[2,]),'place':([0,],[3,]),'filename':([0,],[4,]),'sentence':([2,],[6,]),'bun':([2,],[7,]),'jukugo':([2,7,],[8,18,]),'couse':([3,],[10,]),'points':([4,],[14,]),'point':([4,15,],[15,24,]),}
+_lr_goto_items = {'all':([0,],[1,]),'allbefore':([0,3,],[2,12,]),'lines':([0,3,],[3,3,]),'main':([0,3,],[4,4,]),'placecouse':([0,3,],[5,5,]),'place':([0,3,],[6,6,]),'filename':([0,3,],[7,7,]),'jukugo':([0,3,5,14,15,18,28,36,39,41,47,],[8,16,19,19,40,19,46,19,19,46,40,]),'line':([3,],[13,]),'sentence':([3,5,14,18,36,],[14,18,36,36,36,]),'bun':([3,5,14,18,36,39,],[15,15,15,15,15,47,]),'couse':([6,],[20,]),'note':([6,8,11,16,19,40,46,],[21,34,35,34,34,34,34,]),'points':([7,],[25,]),'point':([7,26,],[26,44,]),'warning':([14,18,36,],[38,38,38,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -25,20 +25,40 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> contents","S'",1,None,None,None),
-  ('contents -> placou sentence','contents',2,'p_contents','clang_yacc.py',25),
-  ('placou -> place couse','placou',2,'p_placecouse','clang_yacc.py',29),
-  ('place -> filename points','place',2,'p_place','clang_yacc.py',34),
-  ('filename -> WORDS TEN WORDS CORON','filename',4,'p_filename','clang_yacc.py',39),
-  ('points -> point point','points',2,'p_points','clang_yacc.py',48),
-  ('point -> NUMBER CORON','point',2,'p_point','clang_yacc.py',53),
-  ('couse -> WARNING CORON','couse',2,'p_couse','clang_yacc.py',58),
-  ('couse -> ERROR CORON','couse',2,'p_couse','clang_yacc.py',59),
-  ('couse -> NOTE CORON','couse',2,'p_couse','clang_yacc.py',60),
-  ('sentence -> bun','sentence',1,'p_sentence','clang_yacc.py',65),
-  ('sentence -> jukugo','sentence',1,'p_sentence','clang_yacc.py',66),
-  ('jukugo -> WORDS','jukugo',1,'p_jukugo','clang_yacc.py',70),
-  ('jukugo -> jukugo WORDS','jukugo',2,'p_jukugo','clang_yacc.py',71),
-  ('bun -> jukugo VAL','bun',2,'p_bun','clang_yacc.py',76),
-  ('bun -> bun jukugo','bun',2,'p_bun','clang_yacc.py',77),
+  ("S' -> all","S'",1,None,None,None),
+  ('all -> allbefore','all',1,'p_all','clang_yacc.py',25),
+  ('allbefore -> lines','allbefore',1,'p_allbefore','clang_yacc.py',33),
+  ('allbefore -> lines allbefore','allbefore',2,'p_allbefore','clang_yacc.py',34),
+  ('lines -> main','lines',1,'p_lines','clang_yacc.py',43),
+  ('lines -> lines line','lines',2,'p_lines','clang_yacc.py',44),
+  ('main -> placecouse sentence','main',2,'p_main','clang_yacc.py',54),
+  ('main -> main KAIGYO','main',2,'p_main','clang_yacc.py',55),
+  ('placecouse -> place couse','placecouse',2,'p_placecouse','clang_yacc.py',60),
+  ('place -> filename points','place',2,'p_place','clang_yacc.py',65),
+  ('points -> point point','points',2,'p_points','clang_yacc.py',70),
+  ('point -> NUMBER CORON','point',2,'p_point','clang_yacc.py',76),
+  ('couse -> note CORON','couse',2,'p_couse','clang_yacc.py',81),
+  ('line -> sentence KAIGYO','line',2,'p_line','clang_yacc.py',86),
+  ('line -> sentence','line',1,'p_line','clang_yacc.py',87),
+  ('sentence -> bun','sentence',1,'p_sentence','clang_yacc.py',96),
+  ('sentence -> sentence warning','sentence',2,'p_sentence','clang_yacc.py',97),
+  ('sentence -> sentence sentence','sentence',2,'p_sentence','clang_yacc.py',98),
+  ('warning -> LKAKU bun RKAKU','warning',3,'p_warning','clang_yacc.py',106),
+  ('bun -> <empty>','bun',0,'p_bun','clang_yacc.py',111),
+  ('bun -> jukugo','bun',1,'p_bun','clang_yacc.py',112),
+  ('bun -> bun jukugo','bun',2,'p_bun','clang_yacc.py',113),
+  ('filename -> jukugo TEN jukugo CORON','filename',4,'p_filename','clang_yacc.py',122),
+  ('jukugo -> WORDS','jukugo',1,'p_jukugo','clang_yacc.py',131),
+  ('jukugo -> KIGO','jukugo',1,'p_jukugo','clang_yacc.py',132),
+  ('jukugo -> jukugo KIGO','jukugo',2,'p_jukugo','clang_yacc.py',133),
+  ('jukugo -> jukugo WORDS','jukugo',2,'p_jukugo','clang_yacc.py',134),
+  ('jukugo -> jukugo TEN','jukugo',2,'p_jukugo','clang_yacc.py',135),
+  ('jukugo -> jukugo VAL','jukugo',2,'p_jukugo','clang_yacc.py',136),
+  ('jukugo -> NUMBER note','jukugo',2,'p_jukugo','clang_yacc.py',137),
+  ('jukugo -> jukugo NUMBER','jukugo',2,'p_jukugo','clang_yacc.py',138),
+  ('jukugo -> jukugo note','jukugo',2,'p_jukugo','clang_yacc.py',139),
+  ('jukugo -> jukugo CORON','jukugo',2,'p_jukugo','clang_yacc.py',140),
+  ('note -> NOTE','note',1,'p_note','clang_yacc.py',148),
+  ('note -> ERROR','note',1,'p_note','clang_yacc.py',149),
+  ('note -> WARNING','note',1,'p_note','clang_yacc.py',150),
 ]

@@ -1,1 +1,6 @@
-practice0.c:5:8: warning: missing terminating '"' character
+practice0.c:5:8: warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'const char *' [-Wint-conversion]
+printf('jjj');
+       ^~~~~
+/usr/include/stdio.h:318:43: note: passing argument to parameter '__format' here
+extern int printf (const char *__restrict __format, ...);
+                                          ^
