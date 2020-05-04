@@ -16,21 +16,26 @@ tokens = [
     'KIGO',
     'VAL',
     'TEN',
-    'ELSE'
+    'EXPE',
+    'MATCH',
+    'UNDECLEAR'
 ]
 t_NUMBER = '[0-9]+' #数字の１回以上の繰り返し
-t_WORDS = '(?!error)(?!warning)(?!note)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*'
+t_WORDS = '(?!error)(?!warning)(?!note)(?!expected)(?!match)(?!undeclared)[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*[a-zA-Zぁ-んァ-ン一-龥ー]+[a-zA-Z0-9ぁ-んァ-ン一-龥ー]*'
 #t_SEMI = ';'
 t_NOTE = 'note'
 t_ignore = ' \t　'
 t_CORON = ':'
 t_ERROR = 'error'
 t_WARNING = 'warning'
+t_EXPE = 'expected'
 t_VAL = '\'[^\']+\''
 t_TEN = '.'
 t_KIGO = '[\}\{\(\)\"\,\<\>\?\;\|\}\{\+\=\_\-\*\&\%\$\#\@\!\`\/^]'
 t_LKAKU = '\['
 t_RKAKU = '\]'
+t_MATCH = 'match'
+t_UNDECLEAR = 'undeclared'
 #t_ZENKAKU = '[^\x01-\x7E]'
 
 def t_KAIGYO(t):

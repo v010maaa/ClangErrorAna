@@ -27,7 +27,7 @@ def p_all(p):
         p[0] = p[1] + p[2]
     else:
         p[0] = p[1]
-    print('all:' + p[0])
+    #print('all:' + p[0])
     
 def p_allbefore(p):
     '''allbefore : lines
@@ -36,7 +36,7 @@ def p_allbefore(p):
         p[0] = p[1] + p[2]
     else:
         p[0] = p[1]
-    print('all:' + p[0])
+    #print('all:' + p[0])
 
 def p_lines(p):
     '''
@@ -48,48 +48,49 @@ def p_lines(p):
     else:
         p[0] = p[1]
 
-    print('lines:' + p[0])
+    #print('lines:' + p[0])
 
 def p_main(p):
     '''main : placecouse sentence
         | main KAIGYO'''
     p[0] = p[1] + p[2]
-    print('main:' + p[0])
+    #print('main:' + p[0])
 
 def p_placecouse(p):
     'placecouse : place couse'
     p[0] = p[1] + p[2]
-    print('placecouse:' + p[0])
+    #print('placecouse:' + p[0])
 
 def p_place(p):
     'place : filename points'
-    p[0] = p[1] + p[2]
-    print('place:' + p[0])
+    p[0] =  p[2]
+    #print('place:' + p[0])
 
 def p_points(p):
     'points : point point'
-    p[0] = p[1] + p[2]
-    print('points:' + p[0])
+    p[0] = p[1] + '行' + p[2] + '文字目付近で'
+    #print('points:' + p[0])
 
 
 def p_point(p):
     'point : NUMBER CORON'
-    p[0] = p[1] + p[2]
-    print('point:' + p[0])
+    p[0] = p[1]
+    #print('point:' + p[0])
 
 def p_couse(p):
     'couse : note CORON'
-    p[0] = p[1] + p[2]
-    print('couse:' + p[0])
+    p[0] = p[1]
+    #print('couse:' + p[0])
 
 def p_line(p):
     '''line : sentence KAIGYO
         | sentence'''
-    if(len(p)==3):
-        p[0] = p[1] + p[2]
-    else:
-        p[0] = p[1]
-    print('line:' + p[0])
+    p[0] = ''
+    #if(len(p)==3):
+    #    p[0] = p[1] + p[2]
+    #else:
+    #    p[0] = p[1]
+    #print('line:' + p[0])
 
 
 def p_sentence(p):
@@ -100,12 +101,12 @@ def p_sentence(p):
         p[0] = p[1]
     else:
         p[0] = p[1] + p[2]
-    print('sentence:' + p[0])
+    #print('sentence:' + p[0])
 
 def p_warning(p):
     'warning : LKAKU bun RKAKU'
     p[0] = p[1] + p[2] + p[3]
-    print('warning:' + p[0])
+    #print('warning:' + p[0])
 
 def p_bun(p):
     '''bun :
@@ -115,41 +116,57 @@ def p_bun(p):
         p[0] = p[1] + p[2]
     else:
         p[0] = p[1]
-    print('bun:' + p[0])
+    #print('bun:' + p[0])
 
 def p_filename(p):
     '''filename : jukugo TEN jukugo CORON'''
     if(p[3]=='c'):
         p[0] = p[1] + p[2] + p[3] + p[4]
-        print('filename:' + p[0])
+        #print('filename:' + p[0])
     else:
         p[0] = p[1] + p[2] + p[3] + p[4]
-        print('nomal word:' + p[0])
+        #print('nomal word:' + p[0])
 
 def p_jukugo(p):
     '''jukugo : WORDS
         | KIGO
-        | KIGO jukugo
         | NUMBER
-        | WORDS jukugo
-        | jukugo TEN 
-        | jukugo VAL
-        | NUMBER note
-        | NUMBER jukugo
-        | jukugo note
-        | jukugo CORON'''
+        | TEN 
+        | note
+        | CORON
+        | jukugo jukugo'''
     if(len(p)==3):
-        p[0] = p[1] + p[2]
+        p[0] =  p[2] + p[1] 
     else:
-        p[0] = p[1]
-    print('jukugo:' + p[0])
+        p[0] = ''
+    #print('jukugo:' + p[0])
+def p_jukugo2(p):
+    'jukugo : jukugo VAL'
+    p[0] = p[2] + 'は' + p[1]
+
+def p_match(p):
+    '''jukugo : MATCH'''
+    p[0] = '括弧の対応ができていないらしい.'
+
+def p_expe(p):
+    'jukugo : EXPE'
+    p[0] = '必要ですよ！'
+
+def  p_undec(p):
+    'jukugo : UNDECLEAR'
+    p[0] = '宣言していない変数が使われているよ！'
 
 def p_note(p):
     '''note : NOTE
         | ERROR
         | WARNING'''
-    p[0] = p[1]
-    print('note:' + p[0])
+    if(p[1]=='error'):
+        p[0] = 'で書き方が間違っている可能性があるよ！'
+    elif(p[1]=='error'):
+        p[0] = 'でに警告が出ているよ！'
+    else: 
+        p[0] = 'の'
+    #print('note:' + p[0])
 
 def p_error(p):
     print('VVVVVVVVVVVVVVVVV')
@@ -163,7 +180,7 @@ def yacc_test():
     data = f.read()
     parser = yacc.yacc()
     result = parser.parse(data)
-    print('result: ', result)
+    print('result:\n', result)
 
 
 if __name__ == '__main__':
