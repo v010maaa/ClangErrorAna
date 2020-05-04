@@ -1,2 +1,3 @@
-practice0.c:5:8: warning: ,...);
-1 1 1                        
+/tmp/practice0-5470a0.o: In function `main':
+practice0.c:(.text+0x4): undefined reference to `indd'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

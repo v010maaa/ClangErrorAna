@@ -1,5 +1,10 @@
 Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    RKAKU
+    LKAKU
+
 Grammar
 
 Rule 0     S' -> all
@@ -11,72 +16,83 @@ Rule 5     lines -> lines line
 Rule 6     main -> placecouse sentence
 Rule 7     main -> main KAIGYO
 Rule 8     placecouse -> place couse
-Rule 9     place -> filename points
-Rule 10    points -> point point
-Rule 11    point -> NUMBER CORON
-Rule 12    couse -> note CORON
-Rule 13    line -> sentence KAIGYO
-Rule 14    line -> sentence
-Rule 15    sentence -> bun
-Rule 16    sentence -> sentence warning
-Rule 17    sentence -> sentence sentence
-Rule 18    warning -> LKAKU bun RKAKU
-Rule 19    bun -> <empty>
-Rule 20    bun -> jukugo
-Rule 21    bun -> bun jukugo
-Rule 22    filename -> jukugo TEN jukugo CORON
-Rule 23    jukugo -> WORDS
-Rule 24    jukugo -> KIGO
-Rule 25    jukugo -> NUMBER
-Rule 26    jukugo -> TEN
-Rule 27    jukugo -> note
-Rule 28    jukugo -> CORON
-Rule 29    jukugo -> jukugo jukugo
-Rule 30    jukugo -> jukugo VAL
-Rule 31    jukugo -> MATCH
-Rule 32    jukugo -> EXPE
-Rule 33    jukugo -> UNDECLEAR
-Rule 34    note -> NOTE
-Rule 35    note -> ERROR
-Rule 36    note -> WARNING
+Rule 9     placecouse -> place
+Rule 10    placecouse -> filename
+Rule 11    place -> filename points
+Rule 12    points -> point point
+Rule 13    point -> NUMBER CORON
+Rule 14    couse -> note CORON
+Rule 15    line -> sentence KAIGYO
+Rule 16    line -> sentence
+Rule 17    sentence -> bun
+Rule 18    sentence -> sentence warning
+Rule 19    sentence -> sentence sentence
+Rule 20    warning -> WTYPE
+Rule 21    bun -> <empty>
+Rule 22    bun -> jukugo
+Rule 23    bun -> bun jukugo
+Rule 24    bun -> bun TEN
+Rule 25    bun -> jukugo TEN
+Rule 26    bun -> bun CORON
+Rule 27    bun -> jukugo CORON
+Rule 28    filename -> jukugo TEN jukugo CORON
+Rule 29    jukugo -> WORDS
+Rule 30    jukugo -> KIGO
+Rule 31    jukugo -> NUMBER
+Rule 32    jukugo -> note
+Rule 33    jukugo -> jukugo jukugo
+Rule 34    jukugo -> jukugo VAL
+Rule 35    jukugo -> FUNCTION
+Rule 36    jukugo -> MATCH
+Rule 37    jukugo -> EXPE
+Rule 38    jukugo -> UNDECLEAR jukugo VAL
+Rule 39    jukugo -> TERMINATE
+Rule 40    jukugo -> UNDEFINE WORDS WORDS VAL
+Rule 41    note -> NOTE
+Rule 42    note -> ERROR
+Rule 43    note -> WARNING
 
 Terminals, with rules where they appear
 
-CORON                : 11 12 22 28
-ERROR                : 35
-EXPE                 : 32
-KAIGYO               : 7 13
-KIGO                 : 24
-LKAKU                : 18
-MATCH                : 31
-NOTE                 : 34
-NUMBER               : 11 25
-RKAKU                : 18
-TEN                  : 22 26
-UNDECLEAR            : 33
-VAL                  : 30
-WARNING              : 36
-WORDS                : 23
+CORON                : 13 14 26 27 28
+ERROR                : 42
+EXPE                 : 37
+FUNCTION             : 35
+KAIGYO               : 7 15
+KIGO                 : 30
+LKAKU                : 
+MATCH                : 36
+NOTE                 : 41
+NUMBER               : 13 31
+RKAKU                : 
+TEN                  : 24 25 28
+TERMINATE            : 39
+UNDECLEAR            : 38
+UNDEFINE             : 40
+VAL                  : 34 38 40
+WARNING              : 43
+WORDS                : 29 40 40
+WTYPE                : 20
 error                : 
 
 Nonterminals, with rules where they appear
 
 all                  : 0
 allbefore            : 1 3
-bun                  : 15 18 21
+bun                  : 17 23 24 26
 couse                : 8
-filename             : 9
-jukugo               : 20 21 22 22 29 29 30
+filename             : 10 11
+jukugo               : 22 23 25 27 28 28 33 33 34 38
 line                 : 5
 lines                : 2 3 5
 main                 : 4 7
-note                 : 12 27
-place                : 8
+note                 : 14 32
+place                : 8 9
 placecouse           : 6
-point                : 10 10
-points               : 9
-sentence             : 6 13 14 16 17 17
-warning              : 16
+point                : 12 12
+points               : 11
+sentence             : 6 15 16 18 19 19
+warning              : 18
 
 Parsing method: LALR
 
@@ -91,34 +107,38 @@ state 0
     (6) main -> . placecouse sentence
     (7) main -> . main KAIGYO
     (8) placecouse -> . place couse
-    (9) place -> . filename points
-    (22) filename -> . jukugo TEN jukugo CORON
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (9) placecouse -> . place
+    (10) placecouse -> . filename
+    (11) place -> . filename points
+    (28) filename -> . jukugo TEN jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
     all                            shift and go to state 1
     allbefore                      shift and go to state 2
@@ -128,7 +148,7 @@ state 0
     place                          shift and go to state 6
     filename                       shift and go to state 7
     jukugo                         shift and go to state 8
-    note                           shift and go to state 14
+    note                           shift and go to state 12
 
 state 1
 
@@ -150,87 +170,99 @@ state 3
     (5) lines -> lines . line
     (2) allbefore -> . lines
     (3) allbefore -> . lines allbefore
-    (13) line -> . sentence KAIGYO
-    (14) line -> . sentence
+    (15) line -> . sentence KAIGYO
+    (16) line -> . sentence
     (4) lines -> . main
     (5) lines -> . lines line
-    (15) sentence -> . bun
-    (16) sentence -> . sentence warning
-    (17) sentence -> . sentence sentence
+    (17) sentence -> . bun
+    (18) sentence -> . sentence warning
+    (19) sentence -> . sentence sentence
     (6) main -> . placecouse sentence
     (7) main -> . main KAIGYO
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
+    (21) bun -> .
+    (22) bun -> . jukugo
+    (23) bun -> . bun jukugo
+    (24) bun -> . bun TEN
+    (25) bun -> . jukugo TEN
+    (26) bun -> . bun CORON
+    (27) bun -> . jukugo CORON
     (8) placecouse -> . place couse
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (9) place -> . filename points
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
-    (22) filename -> . jukugo TEN jukugo CORON
+    (9) placecouse -> . place
+    (10) placecouse -> . filename
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (11) place -> . filename points
+    (28) filename -> . jukugo TEN jukugo CORON
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
   ! reduce/reduce conflict for $end resolved using rule 2 (allbefore -> lines .)
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
     $end            reduce using rule 2 (allbefore -> lines .)
-    KAIGYO          reduce using rule 19 (bun -> .)
-    LKAKU           reduce using rule 19 (bun -> .)
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 21 (bun -> .)
+    CORON           reduce using rule 21 (bun -> .)
+    KAIGYO          reduce using rule 21 (bun -> .)
+    WTYPE           reduce using rule 21 (bun -> .)
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
-  ! $end            [ reduce using rule 19 (bun -> .) ]
+  ! WORDS           [ reduce using rule 21 (bun -> .) ]
+  ! KIGO            [ reduce using rule 21 (bun -> .) ]
+  ! NUMBER          [ reduce using rule 21 (bun -> .) ]
+  ! FUNCTION        [ reduce using rule 21 (bun -> .) ]
+  ! MATCH           [ reduce using rule 21 (bun -> .) ]
+  ! EXPE            [ reduce using rule 21 (bun -> .) ]
+  ! UNDECLEAR       [ reduce using rule 21 (bun -> .) ]
+  ! TERMINATE       [ reduce using rule 21 (bun -> .) ]
+  ! UNDEFINE        [ reduce using rule 21 (bun -> .) ]
+  ! NOTE            [ reduce using rule 21 (bun -> .) ]
+  ! ERROR           [ reduce using rule 21 (bun -> .) ]
+  ! WARNING         [ reduce using rule 21 (bun -> .) ]
+  ! $end            [ reduce using rule 21 (bun -> .) ]
 
     lines                          shift and go to state 3
-    allbefore                      shift and go to state 21
-    line                           shift and go to state 22
-    sentence                       shift and go to state 23
+    allbefore                      shift and go to state 22
+    line                           shift and go to state 23
+    sentence                       shift and go to state 24
     main                           shift and go to state 4
-    bun                            shift and go to state 24
+    bun                            shift and go to state 25
     placecouse                     shift and go to state 5
-    jukugo                         shift and go to state 25
+    jukugo                         shift and go to state 26
     place                          shift and go to state 6
-    note                           shift and go to state 14
     filename                       shift and go to state 7
+    note                           shift and go to state 12
 
 state 4
 
@@ -241,17 +273,20 @@ state 4
     WORDS           reduce using rule 4 (lines -> main .)
     KIGO            reduce using rule 4 (lines -> main .)
     NUMBER          reduce using rule 4 (lines -> main .)
-    TEN             reduce using rule 4 (lines -> main .)
-    CORON           reduce using rule 4 (lines -> main .)
+    FUNCTION        reduce using rule 4 (lines -> main .)
     MATCH           reduce using rule 4 (lines -> main .)
     EXPE            reduce using rule 4 (lines -> main .)
     UNDECLEAR       reduce using rule 4 (lines -> main .)
+    TERMINATE       reduce using rule 4 (lines -> main .)
+    UNDEFINE        reduce using rule 4 (lines -> main .)
     NOTE            reduce using rule 4 (lines -> main .)
     ERROR           reduce using rule 4 (lines -> main .)
     WARNING         reduce using rule 4 (lines -> main .)
-    LKAKU           reduce using rule 4 (lines -> main .)
+    WTYPE           reduce using rule 4 (lines -> main .)
+    TEN             reduce using rule 4 (lines -> main .)
+    CORON           reduce using rule 4 (lines -> main .)
     $end            reduce using rule 4 (lines -> main .)
-    KAIGYO          shift and go to state 26
+    KAIGYO          shift and go to state 27
 
   ! KAIGYO          [ reduce using rule 4 (lines -> main .) ]
 
@@ -259,651 +294,791 @@ state 4
 state 5
 
     (6) main -> placecouse . sentence
-    (15) sentence -> . bun
-    (16) sentence -> . sentence warning
-    (17) sentence -> . sentence sentence
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (17) sentence -> . bun
+    (18) sentence -> . sentence warning
+    (19) sentence -> . sentence sentence
+    (21) bun -> .
+    (22) bun -> . jukugo
+    (23) bun -> . bun jukugo
+    (24) bun -> . bun TEN
+    (25) bun -> . jukugo TEN
+    (26) bun -> . bun CORON
+    (27) bun -> . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    LKAKU           reduce using rule 19 (bun -> .)
-    KAIGYO          reduce using rule 19 (bun -> .)
-    $end            reduce using rule 19 (bun -> .)
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 21 (bun -> .)
+    CORON           reduce using rule 21 (bun -> .)
+    WTYPE           reduce using rule 21 (bun -> .)
+    KAIGYO          reduce using rule 21 (bun -> .)
+    $end            reduce using rule 21 (bun -> .)
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
+  ! WORDS           [ reduce using rule 21 (bun -> .) ]
+  ! KIGO            [ reduce using rule 21 (bun -> .) ]
+  ! NUMBER          [ reduce using rule 21 (bun -> .) ]
+  ! FUNCTION        [ reduce using rule 21 (bun -> .) ]
+  ! MATCH           [ reduce using rule 21 (bun -> .) ]
+  ! EXPE            [ reduce using rule 21 (bun -> .) ]
+  ! UNDECLEAR       [ reduce using rule 21 (bun -> .) ]
+  ! TERMINATE       [ reduce using rule 21 (bun -> .) ]
+  ! UNDEFINE        [ reduce using rule 21 (bun -> .) ]
+  ! NOTE            [ reduce using rule 21 (bun -> .) ]
+  ! ERROR           [ reduce using rule 21 (bun -> .) ]
+  ! WARNING         [ reduce using rule 21 (bun -> .) ]
 
-    sentence                       shift and go to state 27
-    bun                            shift and go to state 24
-    jukugo                         shift and go to state 28
-    note                           shift and go to state 14
+    sentence                       shift and go to state 28
+    bun                            shift and go to state 25
+    jukugo                         shift and go to state 29
+    note                           shift and go to state 12
 
 state 6
 
     (8) placecouse -> place . couse
-    (12) couse -> . note CORON
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (9) placecouse -> place .
+    (14) couse -> . note CORON
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+  ! shift/reduce conflict for NOTE resolved as shift
+  ! shift/reduce conflict for ERROR resolved as shift
+  ! shift/reduce conflict for WARNING resolved as shift
+    WORDS           reduce using rule 9 (placecouse -> place .)
+    KIGO            reduce using rule 9 (placecouse -> place .)
+    NUMBER          reduce using rule 9 (placecouse -> place .)
+    FUNCTION        reduce using rule 9 (placecouse -> place .)
+    MATCH           reduce using rule 9 (placecouse -> place .)
+    EXPE            reduce using rule 9 (placecouse -> place .)
+    UNDECLEAR       reduce using rule 9 (placecouse -> place .)
+    TERMINATE       reduce using rule 9 (placecouse -> place .)
+    UNDEFINE        reduce using rule 9 (placecouse -> place .)
+    WTYPE           reduce using rule 9 (placecouse -> place .)
+    TEN             reduce using rule 9 (placecouse -> place .)
+    CORON           reduce using rule 9 (placecouse -> place .)
+    KAIGYO          reduce using rule 9 (placecouse -> place .)
+    $end            reduce using rule 9 (placecouse -> place .)
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-    couse                          shift and go to state 29
-    note                           shift and go to state 30
+  ! NOTE            [ reduce using rule 9 (placecouse -> place .) ]
+  ! ERROR           [ reduce using rule 9 (placecouse -> place .) ]
+  ! WARNING         [ reduce using rule 9 (placecouse -> place .) ]
+
+    couse                          shift and go to state 30
+    note                           shift and go to state 31
 
 state 7
 
-    (9) place -> filename . points
-    (10) points -> . point point
-    (11) point -> . NUMBER CORON
+    (10) placecouse -> filename .
+    (11) place -> filename . points
+    (12) points -> . point point
+    (13) point -> . NUMBER CORON
 
-    NUMBER          shift and go to state 33
+  ! shift/reduce conflict for NUMBER resolved as shift
+    WORDS           reduce using rule 10 (placecouse -> filename .)
+    KIGO            reduce using rule 10 (placecouse -> filename .)
+    FUNCTION        reduce using rule 10 (placecouse -> filename .)
+    MATCH           reduce using rule 10 (placecouse -> filename .)
+    EXPE            reduce using rule 10 (placecouse -> filename .)
+    UNDECLEAR       reduce using rule 10 (placecouse -> filename .)
+    TERMINATE       reduce using rule 10 (placecouse -> filename .)
+    UNDEFINE        reduce using rule 10 (placecouse -> filename .)
+    NOTE            reduce using rule 10 (placecouse -> filename .)
+    ERROR           reduce using rule 10 (placecouse -> filename .)
+    WARNING         reduce using rule 10 (placecouse -> filename .)
+    WTYPE           reduce using rule 10 (placecouse -> filename .)
+    TEN             reduce using rule 10 (placecouse -> filename .)
+    CORON           reduce using rule 10 (placecouse -> filename .)
+    KAIGYO          reduce using rule 10 (placecouse -> filename .)
+    $end            reduce using rule 10 (placecouse -> filename .)
+    NUMBER          shift and go to state 34
 
-    points                         shift and go to state 31
-    point                          shift and go to state 32
+  ! NUMBER          [ reduce using rule 10 (placecouse -> filename .) ]
+
+    points                         shift and go to state 32
+    point                          shift and go to state 33
 
 state 8
 
-    (22) filename -> jukugo . TEN jukugo CORON
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (28) filename -> jukugo . TEN jukugo CORON
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    TEN             shift and go to state 35
-    VAL             shift and go to state 36
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             shift and go to state 36
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
 
 state 9
 
-    (26) jukugo -> TEN .
+    (29) jukugo -> WORDS .
 
-    TEN             reduce using rule 26 (jukugo -> TEN .)
-    VAL             reduce using rule 26 (jukugo -> TEN .)
-    WORDS           reduce using rule 26 (jukugo -> TEN .)
-    KIGO            reduce using rule 26 (jukugo -> TEN .)
-    NUMBER          reduce using rule 26 (jukugo -> TEN .)
-    CORON           reduce using rule 26 (jukugo -> TEN .)
-    MATCH           reduce using rule 26 (jukugo -> TEN .)
-    EXPE            reduce using rule 26 (jukugo -> TEN .)
-    UNDECLEAR       reduce using rule 26 (jukugo -> TEN .)
-    NOTE            reduce using rule 26 (jukugo -> TEN .)
-    ERROR           reduce using rule 26 (jukugo -> TEN .)
-    WARNING         reduce using rule 26 (jukugo -> TEN .)
-    KAIGYO          reduce using rule 26 (jukugo -> TEN .)
-    LKAKU           reduce using rule 26 (jukugo -> TEN .)
-    $end            reduce using rule 26 (jukugo -> TEN .)
-    RKAKU           reduce using rule 26 (jukugo -> TEN .)
+    TEN             reduce using rule 29 (jukugo -> WORDS .)
+    VAL             reduce using rule 29 (jukugo -> WORDS .)
+    WORDS           reduce using rule 29 (jukugo -> WORDS .)
+    KIGO            reduce using rule 29 (jukugo -> WORDS .)
+    NUMBER          reduce using rule 29 (jukugo -> WORDS .)
+    FUNCTION        reduce using rule 29 (jukugo -> WORDS .)
+    MATCH           reduce using rule 29 (jukugo -> WORDS .)
+    EXPE            reduce using rule 29 (jukugo -> WORDS .)
+    UNDECLEAR       reduce using rule 29 (jukugo -> WORDS .)
+    TERMINATE       reduce using rule 29 (jukugo -> WORDS .)
+    UNDEFINE        reduce using rule 29 (jukugo -> WORDS .)
+    NOTE            reduce using rule 29 (jukugo -> WORDS .)
+    ERROR           reduce using rule 29 (jukugo -> WORDS .)
+    WARNING         reduce using rule 29 (jukugo -> WORDS .)
+    CORON           reduce using rule 29 (jukugo -> WORDS .)
+    KAIGYO          reduce using rule 29 (jukugo -> WORDS .)
+    WTYPE           reduce using rule 29 (jukugo -> WORDS .)
+    $end            reduce using rule 29 (jukugo -> WORDS .)
 
 
 state 10
 
-    (28) jukugo -> CORON .
+    (30) jukugo -> KIGO .
 
-    TEN             reduce using rule 28 (jukugo -> CORON .)
-    VAL             reduce using rule 28 (jukugo -> CORON .)
-    WORDS           reduce using rule 28 (jukugo -> CORON .)
-    KIGO            reduce using rule 28 (jukugo -> CORON .)
-    NUMBER          reduce using rule 28 (jukugo -> CORON .)
-    CORON           reduce using rule 28 (jukugo -> CORON .)
-    MATCH           reduce using rule 28 (jukugo -> CORON .)
-    EXPE            reduce using rule 28 (jukugo -> CORON .)
-    UNDECLEAR       reduce using rule 28 (jukugo -> CORON .)
-    NOTE            reduce using rule 28 (jukugo -> CORON .)
-    ERROR           reduce using rule 28 (jukugo -> CORON .)
-    WARNING         reduce using rule 28 (jukugo -> CORON .)
-    KAIGYO          reduce using rule 28 (jukugo -> CORON .)
-    LKAKU           reduce using rule 28 (jukugo -> CORON .)
-    $end            reduce using rule 28 (jukugo -> CORON .)
-    RKAKU           reduce using rule 28 (jukugo -> CORON .)
+    TEN             reduce using rule 30 (jukugo -> KIGO .)
+    VAL             reduce using rule 30 (jukugo -> KIGO .)
+    WORDS           reduce using rule 30 (jukugo -> KIGO .)
+    KIGO            reduce using rule 30 (jukugo -> KIGO .)
+    NUMBER          reduce using rule 30 (jukugo -> KIGO .)
+    FUNCTION        reduce using rule 30 (jukugo -> KIGO .)
+    MATCH           reduce using rule 30 (jukugo -> KIGO .)
+    EXPE            reduce using rule 30 (jukugo -> KIGO .)
+    UNDECLEAR       reduce using rule 30 (jukugo -> KIGO .)
+    TERMINATE       reduce using rule 30 (jukugo -> KIGO .)
+    UNDEFINE        reduce using rule 30 (jukugo -> KIGO .)
+    NOTE            reduce using rule 30 (jukugo -> KIGO .)
+    ERROR           reduce using rule 30 (jukugo -> KIGO .)
+    WARNING         reduce using rule 30 (jukugo -> KIGO .)
+    CORON           reduce using rule 30 (jukugo -> KIGO .)
+    KAIGYO          reduce using rule 30 (jukugo -> KIGO .)
+    WTYPE           reduce using rule 30 (jukugo -> KIGO .)
+    $end            reduce using rule 30 (jukugo -> KIGO .)
 
 
 state 11
 
-    (23) jukugo -> WORDS .
+    (31) jukugo -> NUMBER .
 
-    TEN             reduce using rule 23 (jukugo -> WORDS .)
-    VAL             reduce using rule 23 (jukugo -> WORDS .)
-    WORDS           reduce using rule 23 (jukugo -> WORDS .)
-    KIGO            reduce using rule 23 (jukugo -> WORDS .)
-    NUMBER          reduce using rule 23 (jukugo -> WORDS .)
-    CORON           reduce using rule 23 (jukugo -> WORDS .)
-    MATCH           reduce using rule 23 (jukugo -> WORDS .)
-    EXPE            reduce using rule 23 (jukugo -> WORDS .)
-    UNDECLEAR       reduce using rule 23 (jukugo -> WORDS .)
-    NOTE            reduce using rule 23 (jukugo -> WORDS .)
-    ERROR           reduce using rule 23 (jukugo -> WORDS .)
-    WARNING         reduce using rule 23 (jukugo -> WORDS .)
-    KAIGYO          reduce using rule 23 (jukugo -> WORDS .)
-    LKAKU           reduce using rule 23 (jukugo -> WORDS .)
-    $end            reduce using rule 23 (jukugo -> WORDS .)
-    RKAKU           reduce using rule 23 (jukugo -> WORDS .)
+    TEN             reduce using rule 31 (jukugo -> NUMBER .)
+    VAL             reduce using rule 31 (jukugo -> NUMBER .)
+    WORDS           reduce using rule 31 (jukugo -> NUMBER .)
+    KIGO            reduce using rule 31 (jukugo -> NUMBER .)
+    NUMBER          reduce using rule 31 (jukugo -> NUMBER .)
+    FUNCTION        reduce using rule 31 (jukugo -> NUMBER .)
+    MATCH           reduce using rule 31 (jukugo -> NUMBER .)
+    EXPE            reduce using rule 31 (jukugo -> NUMBER .)
+    UNDECLEAR       reduce using rule 31 (jukugo -> NUMBER .)
+    TERMINATE       reduce using rule 31 (jukugo -> NUMBER .)
+    UNDEFINE        reduce using rule 31 (jukugo -> NUMBER .)
+    NOTE            reduce using rule 31 (jukugo -> NUMBER .)
+    ERROR           reduce using rule 31 (jukugo -> NUMBER .)
+    WARNING         reduce using rule 31 (jukugo -> NUMBER .)
+    CORON           reduce using rule 31 (jukugo -> NUMBER .)
+    KAIGYO          reduce using rule 31 (jukugo -> NUMBER .)
+    WTYPE           reduce using rule 31 (jukugo -> NUMBER .)
+    $end            reduce using rule 31 (jukugo -> NUMBER .)
 
 
 state 12
 
-    (24) jukugo -> KIGO .
+    (32) jukugo -> note .
 
-    TEN             reduce using rule 24 (jukugo -> KIGO .)
-    VAL             reduce using rule 24 (jukugo -> KIGO .)
-    WORDS           reduce using rule 24 (jukugo -> KIGO .)
-    KIGO            reduce using rule 24 (jukugo -> KIGO .)
-    NUMBER          reduce using rule 24 (jukugo -> KIGO .)
-    CORON           reduce using rule 24 (jukugo -> KIGO .)
-    MATCH           reduce using rule 24 (jukugo -> KIGO .)
-    EXPE            reduce using rule 24 (jukugo -> KIGO .)
-    UNDECLEAR       reduce using rule 24 (jukugo -> KIGO .)
-    NOTE            reduce using rule 24 (jukugo -> KIGO .)
-    ERROR           reduce using rule 24 (jukugo -> KIGO .)
-    WARNING         reduce using rule 24 (jukugo -> KIGO .)
-    KAIGYO          reduce using rule 24 (jukugo -> KIGO .)
-    LKAKU           reduce using rule 24 (jukugo -> KIGO .)
-    $end            reduce using rule 24 (jukugo -> KIGO .)
-    RKAKU           reduce using rule 24 (jukugo -> KIGO .)
+    TEN             reduce using rule 32 (jukugo -> note .)
+    VAL             reduce using rule 32 (jukugo -> note .)
+    WORDS           reduce using rule 32 (jukugo -> note .)
+    KIGO            reduce using rule 32 (jukugo -> note .)
+    NUMBER          reduce using rule 32 (jukugo -> note .)
+    FUNCTION        reduce using rule 32 (jukugo -> note .)
+    MATCH           reduce using rule 32 (jukugo -> note .)
+    EXPE            reduce using rule 32 (jukugo -> note .)
+    UNDECLEAR       reduce using rule 32 (jukugo -> note .)
+    TERMINATE       reduce using rule 32 (jukugo -> note .)
+    UNDEFINE        reduce using rule 32 (jukugo -> note .)
+    NOTE            reduce using rule 32 (jukugo -> note .)
+    ERROR           reduce using rule 32 (jukugo -> note .)
+    WARNING         reduce using rule 32 (jukugo -> note .)
+    CORON           reduce using rule 32 (jukugo -> note .)
+    KAIGYO          reduce using rule 32 (jukugo -> note .)
+    WTYPE           reduce using rule 32 (jukugo -> note .)
+    $end            reduce using rule 32 (jukugo -> note .)
 
 
 state 13
 
-    (25) jukugo -> NUMBER .
+    (35) jukugo -> FUNCTION .
 
-    TEN             reduce using rule 25 (jukugo -> NUMBER .)
-    VAL             reduce using rule 25 (jukugo -> NUMBER .)
-    WORDS           reduce using rule 25 (jukugo -> NUMBER .)
-    KIGO            reduce using rule 25 (jukugo -> NUMBER .)
-    NUMBER          reduce using rule 25 (jukugo -> NUMBER .)
-    CORON           reduce using rule 25 (jukugo -> NUMBER .)
-    MATCH           reduce using rule 25 (jukugo -> NUMBER .)
-    EXPE            reduce using rule 25 (jukugo -> NUMBER .)
-    UNDECLEAR       reduce using rule 25 (jukugo -> NUMBER .)
-    NOTE            reduce using rule 25 (jukugo -> NUMBER .)
-    ERROR           reduce using rule 25 (jukugo -> NUMBER .)
-    WARNING         reduce using rule 25 (jukugo -> NUMBER .)
-    KAIGYO          reduce using rule 25 (jukugo -> NUMBER .)
-    LKAKU           reduce using rule 25 (jukugo -> NUMBER .)
-    $end            reduce using rule 25 (jukugo -> NUMBER .)
-    RKAKU           reduce using rule 25 (jukugo -> NUMBER .)
+    TEN             reduce using rule 35 (jukugo -> FUNCTION .)
+    VAL             reduce using rule 35 (jukugo -> FUNCTION .)
+    WORDS           reduce using rule 35 (jukugo -> FUNCTION .)
+    KIGO            reduce using rule 35 (jukugo -> FUNCTION .)
+    NUMBER          reduce using rule 35 (jukugo -> FUNCTION .)
+    FUNCTION        reduce using rule 35 (jukugo -> FUNCTION .)
+    MATCH           reduce using rule 35 (jukugo -> FUNCTION .)
+    EXPE            reduce using rule 35 (jukugo -> FUNCTION .)
+    UNDECLEAR       reduce using rule 35 (jukugo -> FUNCTION .)
+    TERMINATE       reduce using rule 35 (jukugo -> FUNCTION .)
+    UNDEFINE        reduce using rule 35 (jukugo -> FUNCTION .)
+    NOTE            reduce using rule 35 (jukugo -> FUNCTION .)
+    ERROR           reduce using rule 35 (jukugo -> FUNCTION .)
+    WARNING         reduce using rule 35 (jukugo -> FUNCTION .)
+    CORON           reduce using rule 35 (jukugo -> FUNCTION .)
+    KAIGYO          reduce using rule 35 (jukugo -> FUNCTION .)
+    WTYPE           reduce using rule 35 (jukugo -> FUNCTION .)
+    $end            reduce using rule 35 (jukugo -> FUNCTION .)
 
 
 state 14
 
-    (27) jukugo -> note .
+    (36) jukugo -> MATCH .
 
-    TEN             reduce using rule 27 (jukugo -> note .)
-    VAL             reduce using rule 27 (jukugo -> note .)
-    WORDS           reduce using rule 27 (jukugo -> note .)
-    KIGO            reduce using rule 27 (jukugo -> note .)
-    NUMBER          reduce using rule 27 (jukugo -> note .)
-    CORON           reduce using rule 27 (jukugo -> note .)
-    MATCH           reduce using rule 27 (jukugo -> note .)
-    EXPE            reduce using rule 27 (jukugo -> note .)
-    UNDECLEAR       reduce using rule 27 (jukugo -> note .)
-    NOTE            reduce using rule 27 (jukugo -> note .)
-    ERROR           reduce using rule 27 (jukugo -> note .)
-    WARNING         reduce using rule 27 (jukugo -> note .)
-    KAIGYO          reduce using rule 27 (jukugo -> note .)
-    LKAKU           reduce using rule 27 (jukugo -> note .)
-    $end            reduce using rule 27 (jukugo -> note .)
-    RKAKU           reduce using rule 27 (jukugo -> note .)
+    TEN             reduce using rule 36 (jukugo -> MATCH .)
+    VAL             reduce using rule 36 (jukugo -> MATCH .)
+    WORDS           reduce using rule 36 (jukugo -> MATCH .)
+    KIGO            reduce using rule 36 (jukugo -> MATCH .)
+    NUMBER          reduce using rule 36 (jukugo -> MATCH .)
+    FUNCTION        reduce using rule 36 (jukugo -> MATCH .)
+    MATCH           reduce using rule 36 (jukugo -> MATCH .)
+    EXPE            reduce using rule 36 (jukugo -> MATCH .)
+    UNDECLEAR       reduce using rule 36 (jukugo -> MATCH .)
+    TERMINATE       reduce using rule 36 (jukugo -> MATCH .)
+    UNDEFINE        reduce using rule 36 (jukugo -> MATCH .)
+    NOTE            reduce using rule 36 (jukugo -> MATCH .)
+    ERROR           reduce using rule 36 (jukugo -> MATCH .)
+    WARNING         reduce using rule 36 (jukugo -> MATCH .)
+    CORON           reduce using rule 36 (jukugo -> MATCH .)
+    KAIGYO          reduce using rule 36 (jukugo -> MATCH .)
+    WTYPE           reduce using rule 36 (jukugo -> MATCH .)
+    $end            reduce using rule 36 (jukugo -> MATCH .)
 
 
 state 15
 
-    (31) jukugo -> MATCH .
+    (37) jukugo -> EXPE .
 
-    TEN             reduce using rule 31 (jukugo -> MATCH .)
-    VAL             reduce using rule 31 (jukugo -> MATCH .)
-    WORDS           reduce using rule 31 (jukugo -> MATCH .)
-    KIGO            reduce using rule 31 (jukugo -> MATCH .)
-    NUMBER          reduce using rule 31 (jukugo -> MATCH .)
-    CORON           reduce using rule 31 (jukugo -> MATCH .)
-    MATCH           reduce using rule 31 (jukugo -> MATCH .)
-    EXPE            reduce using rule 31 (jukugo -> MATCH .)
-    UNDECLEAR       reduce using rule 31 (jukugo -> MATCH .)
-    NOTE            reduce using rule 31 (jukugo -> MATCH .)
-    ERROR           reduce using rule 31 (jukugo -> MATCH .)
-    WARNING         reduce using rule 31 (jukugo -> MATCH .)
-    KAIGYO          reduce using rule 31 (jukugo -> MATCH .)
-    LKAKU           reduce using rule 31 (jukugo -> MATCH .)
-    $end            reduce using rule 31 (jukugo -> MATCH .)
-    RKAKU           reduce using rule 31 (jukugo -> MATCH .)
+    TEN             reduce using rule 37 (jukugo -> EXPE .)
+    VAL             reduce using rule 37 (jukugo -> EXPE .)
+    WORDS           reduce using rule 37 (jukugo -> EXPE .)
+    KIGO            reduce using rule 37 (jukugo -> EXPE .)
+    NUMBER          reduce using rule 37 (jukugo -> EXPE .)
+    FUNCTION        reduce using rule 37 (jukugo -> EXPE .)
+    MATCH           reduce using rule 37 (jukugo -> EXPE .)
+    EXPE            reduce using rule 37 (jukugo -> EXPE .)
+    UNDECLEAR       reduce using rule 37 (jukugo -> EXPE .)
+    TERMINATE       reduce using rule 37 (jukugo -> EXPE .)
+    UNDEFINE        reduce using rule 37 (jukugo -> EXPE .)
+    NOTE            reduce using rule 37 (jukugo -> EXPE .)
+    ERROR           reduce using rule 37 (jukugo -> EXPE .)
+    WARNING         reduce using rule 37 (jukugo -> EXPE .)
+    CORON           reduce using rule 37 (jukugo -> EXPE .)
+    KAIGYO          reduce using rule 37 (jukugo -> EXPE .)
+    WTYPE           reduce using rule 37 (jukugo -> EXPE .)
+    $end            reduce using rule 37 (jukugo -> EXPE .)
 
 
 state 16
 
-    (32) jukugo -> EXPE .
+    (38) jukugo -> UNDECLEAR . jukugo VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    TEN             reduce using rule 32 (jukugo -> EXPE .)
-    VAL             reduce using rule 32 (jukugo -> EXPE .)
-    WORDS           reduce using rule 32 (jukugo -> EXPE .)
-    KIGO            reduce using rule 32 (jukugo -> EXPE .)
-    NUMBER          reduce using rule 32 (jukugo -> EXPE .)
-    CORON           reduce using rule 32 (jukugo -> EXPE .)
-    MATCH           reduce using rule 32 (jukugo -> EXPE .)
-    EXPE            reduce using rule 32 (jukugo -> EXPE .)
-    UNDECLEAR       reduce using rule 32 (jukugo -> EXPE .)
-    NOTE            reduce using rule 32 (jukugo -> EXPE .)
-    ERROR           reduce using rule 32 (jukugo -> EXPE .)
-    WARNING         reduce using rule 32 (jukugo -> EXPE .)
-    KAIGYO          reduce using rule 32 (jukugo -> EXPE .)
-    LKAKU           reduce using rule 32 (jukugo -> EXPE .)
-    $end            reduce using rule 32 (jukugo -> EXPE .)
-    RKAKU           reduce using rule 32 (jukugo -> EXPE .)
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
+    jukugo                         shift and go to state 38
+    note                           shift and go to state 12
 
 state 17
 
-    (33) jukugo -> UNDECLEAR .
+    (39) jukugo -> TERMINATE .
 
-    TEN             reduce using rule 33 (jukugo -> UNDECLEAR .)
-    VAL             reduce using rule 33 (jukugo -> UNDECLEAR .)
-    WORDS           reduce using rule 33 (jukugo -> UNDECLEAR .)
-    KIGO            reduce using rule 33 (jukugo -> UNDECLEAR .)
-    NUMBER          reduce using rule 33 (jukugo -> UNDECLEAR .)
-    CORON           reduce using rule 33 (jukugo -> UNDECLEAR .)
-    MATCH           reduce using rule 33 (jukugo -> UNDECLEAR .)
-    EXPE            reduce using rule 33 (jukugo -> UNDECLEAR .)
-    UNDECLEAR       reduce using rule 33 (jukugo -> UNDECLEAR .)
-    NOTE            reduce using rule 33 (jukugo -> UNDECLEAR .)
-    ERROR           reduce using rule 33 (jukugo -> UNDECLEAR .)
-    WARNING         reduce using rule 33 (jukugo -> UNDECLEAR .)
-    KAIGYO          reduce using rule 33 (jukugo -> UNDECLEAR .)
-    LKAKU           reduce using rule 33 (jukugo -> UNDECLEAR .)
-    $end            reduce using rule 33 (jukugo -> UNDECLEAR .)
-    RKAKU           reduce using rule 33 (jukugo -> UNDECLEAR .)
+    TEN             reduce using rule 39 (jukugo -> TERMINATE .)
+    VAL             reduce using rule 39 (jukugo -> TERMINATE .)
+    WORDS           reduce using rule 39 (jukugo -> TERMINATE .)
+    KIGO            reduce using rule 39 (jukugo -> TERMINATE .)
+    NUMBER          reduce using rule 39 (jukugo -> TERMINATE .)
+    FUNCTION        reduce using rule 39 (jukugo -> TERMINATE .)
+    MATCH           reduce using rule 39 (jukugo -> TERMINATE .)
+    EXPE            reduce using rule 39 (jukugo -> TERMINATE .)
+    UNDECLEAR       reduce using rule 39 (jukugo -> TERMINATE .)
+    TERMINATE       reduce using rule 39 (jukugo -> TERMINATE .)
+    UNDEFINE        reduce using rule 39 (jukugo -> TERMINATE .)
+    NOTE            reduce using rule 39 (jukugo -> TERMINATE .)
+    ERROR           reduce using rule 39 (jukugo -> TERMINATE .)
+    WARNING         reduce using rule 39 (jukugo -> TERMINATE .)
+    CORON           reduce using rule 39 (jukugo -> TERMINATE .)
+    KAIGYO          reduce using rule 39 (jukugo -> TERMINATE .)
+    WTYPE           reduce using rule 39 (jukugo -> TERMINATE .)
+    $end            reduce using rule 39 (jukugo -> TERMINATE .)
 
 
 state 18
 
-    (34) note -> NOTE .
+    (40) jukugo -> UNDEFINE . WORDS WORDS VAL
 
-    TEN             reduce using rule 34 (note -> NOTE .)
-    VAL             reduce using rule 34 (note -> NOTE .)
-    WORDS           reduce using rule 34 (note -> NOTE .)
-    KIGO            reduce using rule 34 (note -> NOTE .)
-    NUMBER          reduce using rule 34 (note -> NOTE .)
-    CORON           reduce using rule 34 (note -> NOTE .)
-    MATCH           reduce using rule 34 (note -> NOTE .)
-    EXPE            reduce using rule 34 (note -> NOTE .)
-    UNDECLEAR       reduce using rule 34 (note -> NOTE .)
-    NOTE            reduce using rule 34 (note -> NOTE .)
-    ERROR           reduce using rule 34 (note -> NOTE .)
-    WARNING         reduce using rule 34 (note -> NOTE .)
-    KAIGYO          reduce using rule 34 (note -> NOTE .)
-    LKAKU           reduce using rule 34 (note -> NOTE .)
-    $end            reduce using rule 34 (note -> NOTE .)
-    RKAKU           reduce using rule 34 (note -> NOTE .)
+    WORDS           shift and go to state 39
 
 
 state 19
 
-    (35) note -> ERROR .
+    (41) note -> NOTE .
 
-    TEN             reduce using rule 35 (note -> ERROR .)
-    VAL             reduce using rule 35 (note -> ERROR .)
-    WORDS           reduce using rule 35 (note -> ERROR .)
-    KIGO            reduce using rule 35 (note -> ERROR .)
-    NUMBER          reduce using rule 35 (note -> ERROR .)
-    CORON           reduce using rule 35 (note -> ERROR .)
-    MATCH           reduce using rule 35 (note -> ERROR .)
-    EXPE            reduce using rule 35 (note -> ERROR .)
-    UNDECLEAR       reduce using rule 35 (note -> ERROR .)
-    NOTE            reduce using rule 35 (note -> ERROR .)
-    ERROR           reduce using rule 35 (note -> ERROR .)
-    WARNING         reduce using rule 35 (note -> ERROR .)
-    KAIGYO          reduce using rule 35 (note -> ERROR .)
-    LKAKU           reduce using rule 35 (note -> ERROR .)
-    $end            reduce using rule 35 (note -> ERROR .)
-    RKAKU           reduce using rule 35 (note -> ERROR .)
+    TEN             reduce using rule 41 (note -> NOTE .)
+    VAL             reduce using rule 41 (note -> NOTE .)
+    WORDS           reduce using rule 41 (note -> NOTE .)
+    KIGO            reduce using rule 41 (note -> NOTE .)
+    NUMBER          reduce using rule 41 (note -> NOTE .)
+    FUNCTION        reduce using rule 41 (note -> NOTE .)
+    MATCH           reduce using rule 41 (note -> NOTE .)
+    EXPE            reduce using rule 41 (note -> NOTE .)
+    UNDECLEAR       reduce using rule 41 (note -> NOTE .)
+    TERMINATE       reduce using rule 41 (note -> NOTE .)
+    UNDEFINE        reduce using rule 41 (note -> NOTE .)
+    NOTE            reduce using rule 41 (note -> NOTE .)
+    ERROR           reduce using rule 41 (note -> NOTE .)
+    WARNING         reduce using rule 41 (note -> NOTE .)
+    CORON           reduce using rule 41 (note -> NOTE .)
+    KAIGYO          reduce using rule 41 (note -> NOTE .)
+    WTYPE           reduce using rule 41 (note -> NOTE .)
+    $end            reduce using rule 41 (note -> NOTE .)
 
 
 state 20
 
-    (36) note -> WARNING .
+    (42) note -> ERROR .
 
-    TEN             reduce using rule 36 (note -> WARNING .)
-    VAL             reduce using rule 36 (note -> WARNING .)
-    WORDS           reduce using rule 36 (note -> WARNING .)
-    KIGO            reduce using rule 36 (note -> WARNING .)
-    NUMBER          reduce using rule 36 (note -> WARNING .)
-    CORON           reduce using rule 36 (note -> WARNING .)
-    MATCH           reduce using rule 36 (note -> WARNING .)
-    EXPE            reduce using rule 36 (note -> WARNING .)
-    UNDECLEAR       reduce using rule 36 (note -> WARNING .)
-    NOTE            reduce using rule 36 (note -> WARNING .)
-    ERROR           reduce using rule 36 (note -> WARNING .)
-    WARNING         reduce using rule 36 (note -> WARNING .)
-    KAIGYO          reduce using rule 36 (note -> WARNING .)
-    LKAKU           reduce using rule 36 (note -> WARNING .)
-    $end            reduce using rule 36 (note -> WARNING .)
-    RKAKU           reduce using rule 36 (note -> WARNING .)
+    TEN             reduce using rule 42 (note -> ERROR .)
+    VAL             reduce using rule 42 (note -> ERROR .)
+    WORDS           reduce using rule 42 (note -> ERROR .)
+    KIGO            reduce using rule 42 (note -> ERROR .)
+    NUMBER          reduce using rule 42 (note -> ERROR .)
+    FUNCTION        reduce using rule 42 (note -> ERROR .)
+    MATCH           reduce using rule 42 (note -> ERROR .)
+    EXPE            reduce using rule 42 (note -> ERROR .)
+    UNDECLEAR       reduce using rule 42 (note -> ERROR .)
+    TERMINATE       reduce using rule 42 (note -> ERROR .)
+    UNDEFINE        reduce using rule 42 (note -> ERROR .)
+    NOTE            reduce using rule 42 (note -> ERROR .)
+    ERROR           reduce using rule 42 (note -> ERROR .)
+    WARNING         reduce using rule 42 (note -> ERROR .)
+    CORON           reduce using rule 42 (note -> ERROR .)
+    KAIGYO          reduce using rule 42 (note -> ERROR .)
+    WTYPE           reduce using rule 42 (note -> ERROR .)
+    $end            reduce using rule 42 (note -> ERROR .)
 
 
 state 21
+
+    (43) note -> WARNING .
+
+    TEN             reduce using rule 43 (note -> WARNING .)
+    VAL             reduce using rule 43 (note -> WARNING .)
+    WORDS           reduce using rule 43 (note -> WARNING .)
+    KIGO            reduce using rule 43 (note -> WARNING .)
+    NUMBER          reduce using rule 43 (note -> WARNING .)
+    FUNCTION        reduce using rule 43 (note -> WARNING .)
+    MATCH           reduce using rule 43 (note -> WARNING .)
+    EXPE            reduce using rule 43 (note -> WARNING .)
+    UNDECLEAR       reduce using rule 43 (note -> WARNING .)
+    TERMINATE       reduce using rule 43 (note -> WARNING .)
+    UNDEFINE        reduce using rule 43 (note -> WARNING .)
+    NOTE            reduce using rule 43 (note -> WARNING .)
+    ERROR           reduce using rule 43 (note -> WARNING .)
+    WARNING         reduce using rule 43 (note -> WARNING .)
+    CORON           reduce using rule 43 (note -> WARNING .)
+    KAIGYO          reduce using rule 43 (note -> WARNING .)
+    WTYPE           reduce using rule 43 (note -> WARNING .)
+    $end            reduce using rule 43 (note -> WARNING .)
+
+
+state 22
 
     (3) allbefore -> lines allbefore .
 
     $end            reduce using rule 3 (allbefore -> lines allbefore .)
 
 
-state 22
+state 23
 
     (5) lines -> lines line .
 
     WORDS           reduce using rule 5 (lines -> lines line .)
     KIGO            reduce using rule 5 (lines -> lines line .)
     NUMBER          reduce using rule 5 (lines -> lines line .)
-    TEN             reduce using rule 5 (lines -> lines line .)
-    CORON           reduce using rule 5 (lines -> lines line .)
+    FUNCTION        reduce using rule 5 (lines -> lines line .)
     MATCH           reduce using rule 5 (lines -> lines line .)
     EXPE            reduce using rule 5 (lines -> lines line .)
     UNDECLEAR       reduce using rule 5 (lines -> lines line .)
+    TERMINATE       reduce using rule 5 (lines -> lines line .)
+    UNDEFINE        reduce using rule 5 (lines -> lines line .)
     NOTE            reduce using rule 5 (lines -> lines line .)
     ERROR           reduce using rule 5 (lines -> lines line .)
     WARNING         reduce using rule 5 (lines -> lines line .)
     KAIGYO          reduce using rule 5 (lines -> lines line .)
-    LKAKU           reduce using rule 5 (lines -> lines line .)
+    WTYPE           reduce using rule 5 (lines -> lines line .)
+    TEN             reduce using rule 5 (lines -> lines line .)
+    CORON           reduce using rule 5 (lines -> lines line .)
     $end            reduce using rule 5 (lines -> lines line .)
 
 
-state 23
-
-    (13) line -> sentence . KAIGYO
-    (14) line -> sentence .
-    (16) sentence -> sentence . warning
-    (17) sentence -> sentence . sentence
-    (18) warning -> . LKAKU bun RKAKU
-    (15) sentence -> . bun
-    (16) sentence -> . sentence warning
-    (17) sentence -> . sentence sentence
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
-
-  ! shift/reduce conflict for KAIGYO resolved as shift
-  ! shift/reduce conflict for LKAKU resolved as shift
-  ! reduce/reduce conflict for WORDS resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for KIGO resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for NUMBER resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for TEN resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for CORON resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for MATCH resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for EXPE resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for UNDECLEAR resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for NOTE resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for ERROR resolved using rule 14 (line -> sentence .)
-  ! reduce/reduce conflict for WARNING resolved using rule 14 (line -> sentence .)
-  ! shift/reduce conflict for LKAKU resolved as shift
-  ! shift/reduce conflict for KAIGYO resolved as shift
-  ! reduce/reduce conflict for $end resolved using rule 14 (line -> sentence .)
-  ! shift/reduce conflict for WORDS resolved as shift
-  ! shift/reduce conflict for KIGO resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
-  ! shift/reduce conflict for MATCH resolved as shift
-  ! shift/reduce conflict for EXPE resolved as shift
-  ! shift/reduce conflict for UNDECLEAR resolved as shift
-  ! shift/reduce conflict for NOTE resolved as shift
-  ! shift/reduce conflict for ERROR resolved as shift
-  ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          shift and go to state 38
-    $end            reduce using rule 14 (line -> sentence .)
-    LKAKU           shift and go to state 40
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
-
-  ! WORDS           [ reduce using rule 14 (line -> sentence .) ]
-  ! KIGO            [ reduce using rule 14 (line -> sentence .) ]
-  ! NUMBER          [ reduce using rule 14 (line -> sentence .) ]
-  ! TEN             [ reduce using rule 14 (line -> sentence .) ]
-  ! CORON           [ reduce using rule 14 (line -> sentence .) ]
-  ! MATCH           [ reduce using rule 14 (line -> sentence .) ]
-  ! EXPE            [ reduce using rule 14 (line -> sentence .) ]
-  ! UNDECLEAR       [ reduce using rule 14 (line -> sentence .) ]
-  ! NOTE            [ reduce using rule 14 (line -> sentence .) ]
-  ! ERROR           [ reduce using rule 14 (line -> sentence .) ]
-  ! WARNING         [ reduce using rule 14 (line -> sentence .) ]
-  ! KAIGYO          [ reduce using rule 14 (line -> sentence .) ]
-  ! LKAKU           [ reduce using rule 14 (line -> sentence .) ]
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
-  ! LKAKU           [ reduce using rule 19 (bun -> .) ]
-  ! KAIGYO          [ reduce using rule 19 (bun -> .) ]
-  ! $end            [ reduce using rule 19 (bun -> .) ]
-
-    sentence                       shift and go to state 37
-    warning                        shift and go to state 39
-    bun                            shift and go to state 24
-    jukugo                         shift and go to state 28
-    note                           shift and go to state 14
-
 state 24
 
-    (15) sentence -> bun .
-    (21) bun -> bun . jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (15) line -> sentence . KAIGYO
+    (16) line -> sentence .
+    (18) sentence -> sentence . warning
+    (19) sentence -> sentence . sentence
+    (20) warning -> . WTYPE
+    (17) sentence -> . bun
+    (18) sentence -> . sentence warning
+    (19) sentence -> . sentence sentence
+    (21) bun -> .
+    (22) bun -> . jukugo
+    (23) bun -> . bun jukugo
+    (24) bun -> . bun TEN
+    (25) bun -> . jukugo TEN
+    (26) bun -> . bun CORON
+    (27) bun -> . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
+  ! shift/reduce conflict for KAIGYO resolved as shift
+  ! shift/reduce conflict for WTYPE resolved as shift
+  ! reduce/reduce conflict for TEN resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for CORON resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for WORDS resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for KIGO resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for NUMBER resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for FUNCTION resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for MATCH resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for EXPE resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for UNDECLEAR resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for TERMINATE resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for UNDEFINE resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for NOTE resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for ERROR resolved using rule 16 (line -> sentence .)
+  ! reduce/reduce conflict for WARNING resolved using rule 16 (line -> sentence .)
+  ! shift/reduce conflict for WTYPE resolved as shift
+  ! shift/reduce conflict for KAIGYO resolved as shift
+  ! reduce/reduce conflict for $end resolved using rule 16 (line -> sentence .)
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          reduce using rule 15 (sentence -> bun .)
-    LKAKU           reduce using rule 15 (sentence -> bun .)
-    $end            reduce using rule 15 (sentence -> bun .)
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    KAIGYO          shift and go to state 41
+    TEN             reduce using rule 16 (line -> sentence .)
+    CORON           reduce using rule 16 (line -> sentence .)
+    $end            reduce using rule 16 (line -> sentence .)
+    WTYPE           shift and go to state 43
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 15 (sentence -> bun .) ]
-  ! KIGO            [ reduce using rule 15 (sentence -> bun .) ]
-  ! NUMBER          [ reduce using rule 15 (sentence -> bun .) ]
-  ! TEN             [ reduce using rule 15 (sentence -> bun .) ]
-  ! CORON           [ reduce using rule 15 (sentence -> bun .) ]
-  ! MATCH           [ reduce using rule 15 (sentence -> bun .) ]
-  ! EXPE            [ reduce using rule 15 (sentence -> bun .) ]
-  ! UNDECLEAR       [ reduce using rule 15 (sentence -> bun .) ]
-  ! NOTE            [ reduce using rule 15 (sentence -> bun .) ]
-  ! ERROR           [ reduce using rule 15 (sentence -> bun .) ]
-  ! WARNING         [ reduce using rule 15 (sentence -> bun .) ]
+  ! WORDS           [ reduce using rule 16 (line -> sentence .) ]
+  ! KIGO            [ reduce using rule 16 (line -> sentence .) ]
+  ! NUMBER          [ reduce using rule 16 (line -> sentence .) ]
+  ! FUNCTION        [ reduce using rule 16 (line -> sentence .) ]
+  ! MATCH           [ reduce using rule 16 (line -> sentence .) ]
+  ! EXPE            [ reduce using rule 16 (line -> sentence .) ]
+  ! UNDECLEAR       [ reduce using rule 16 (line -> sentence .) ]
+  ! TERMINATE       [ reduce using rule 16 (line -> sentence .) ]
+  ! UNDEFINE        [ reduce using rule 16 (line -> sentence .) ]
+  ! NOTE            [ reduce using rule 16 (line -> sentence .) ]
+  ! ERROR           [ reduce using rule 16 (line -> sentence .) ]
+  ! WARNING         [ reduce using rule 16 (line -> sentence .) ]
+  ! KAIGYO          [ reduce using rule 16 (line -> sentence .) ]
+  ! WTYPE           [ reduce using rule 16 (line -> sentence .) ]
+  ! TEN             [ reduce using rule 21 (bun -> .) ]
+  ! CORON           [ reduce using rule 21 (bun -> .) ]
+  ! WORDS           [ reduce using rule 21 (bun -> .) ]
+  ! KIGO            [ reduce using rule 21 (bun -> .) ]
+  ! NUMBER          [ reduce using rule 21 (bun -> .) ]
+  ! FUNCTION        [ reduce using rule 21 (bun -> .) ]
+  ! MATCH           [ reduce using rule 21 (bun -> .) ]
+  ! EXPE            [ reduce using rule 21 (bun -> .) ]
+  ! UNDECLEAR       [ reduce using rule 21 (bun -> .) ]
+  ! TERMINATE       [ reduce using rule 21 (bun -> .) ]
+  ! UNDEFINE        [ reduce using rule 21 (bun -> .) ]
+  ! NOTE            [ reduce using rule 21 (bun -> .) ]
+  ! ERROR           [ reduce using rule 21 (bun -> .) ]
+  ! WARNING         [ reduce using rule 21 (bun -> .) ]
+  ! WTYPE           [ reduce using rule 21 (bun -> .) ]
+  ! KAIGYO          [ reduce using rule 21 (bun -> .) ]
+  ! $end            [ reduce using rule 21 (bun -> .) ]
 
-    jukugo                         shift and go to state 41
-    note                           shift and go to state 14
+    sentence                       shift and go to state 40
+    warning                        shift and go to state 42
+    bun                            shift and go to state 25
+    jukugo                         shift and go to state 29
+    note                           shift and go to state 12
 
 state 25
 
-    (20) bun -> jukugo .
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (22) filename -> jukugo . TEN jukugo CORON
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (17) sentence -> bun .
+    (23) bun -> bun . jukugo
+    (24) bun -> bun . TEN
+    (26) bun -> bun . CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
   ! shift/reduce conflict for TEN resolved as shift
+  ! shift/reduce conflict for CORON resolved as shift
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          reduce using rule 20 (bun -> jukugo .)
-    LKAKU           reduce using rule 20 (bun -> jukugo .)
-    $end            reduce using rule 20 (bun -> jukugo .)
-    VAL             shift and go to state 36
-    TEN             shift and go to state 35
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    KAIGYO          reduce using rule 17 (sentence -> bun .)
+    WTYPE           reduce using rule 17 (sentence -> bun .)
+    $end            reduce using rule 17 (sentence -> bun .)
+    TEN             shift and go to state 45
+    CORON           shift and go to state 46
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! KIGO            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! NUMBER          [ reduce using rule 20 (bun -> jukugo .) ]
-  ! TEN             [ reduce using rule 20 (bun -> jukugo .) ]
-  ! CORON           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! MATCH           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! EXPE            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! UNDECLEAR       [ reduce using rule 20 (bun -> jukugo .) ]
-  ! NOTE            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! ERROR           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! WARNING         [ reduce using rule 20 (bun -> jukugo .) ]
+  ! WORDS           [ reduce using rule 17 (sentence -> bun .) ]
+  ! KIGO            [ reduce using rule 17 (sentence -> bun .) ]
+  ! NUMBER          [ reduce using rule 17 (sentence -> bun .) ]
+  ! FUNCTION        [ reduce using rule 17 (sentence -> bun .) ]
+  ! MATCH           [ reduce using rule 17 (sentence -> bun .) ]
+  ! EXPE            [ reduce using rule 17 (sentence -> bun .) ]
+  ! UNDECLEAR       [ reduce using rule 17 (sentence -> bun .) ]
+  ! TERMINATE       [ reduce using rule 17 (sentence -> bun .) ]
+  ! UNDEFINE        [ reduce using rule 17 (sentence -> bun .) ]
+  ! NOTE            [ reduce using rule 17 (sentence -> bun .) ]
+  ! ERROR           [ reduce using rule 17 (sentence -> bun .) ]
+  ! WARNING         [ reduce using rule 17 (sentence -> bun .) ]
+  ! TEN             [ reduce using rule 17 (sentence -> bun .) ]
+  ! CORON           [ reduce using rule 17 (sentence -> bun .) ]
 
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
+    jukugo                         shift and go to state 44
+    note                           shift and go to state 12
 
 state 26
+
+    (22) bun -> jukugo .
+    (25) bun -> jukugo . TEN
+    (27) bun -> jukugo . CORON
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (28) filename -> jukugo . TEN jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
+
+  ! shift/reduce conflict for TEN resolved as shift
+  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for WORDS resolved as shift
+  ! shift/reduce conflict for KIGO resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
+  ! shift/reduce conflict for MATCH resolved as shift
+  ! shift/reduce conflict for EXPE resolved as shift
+  ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
+  ! shift/reduce conflict for NOTE resolved as shift
+  ! shift/reduce conflict for ERROR resolved as shift
+  ! shift/reduce conflict for WARNING resolved as shift
+    KAIGYO          reduce using rule 22 (bun -> jukugo .)
+    WTYPE           reduce using rule 22 (bun -> jukugo .)
+    $end            reduce using rule 22 (bun -> jukugo .)
+    TEN             shift and go to state 47
+    CORON           shift and go to state 48
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
+
+  ! TEN             [ reduce using rule 22 (bun -> jukugo .) ]
+  ! CORON           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! WORDS           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! KIGO            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! NUMBER          [ reduce using rule 22 (bun -> jukugo .) ]
+  ! FUNCTION        [ reduce using rule 22 (bun -> jukugo .) ]
+  ! MATCH           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! EXPE            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! UNDECLEAR       [ reduce using rule 22 (bun -> jukugo .) ]
+  ! TERMINATE       [ reduce using rule 22 (bun -> jukugo .) ]
+  ! UNDEFINE        [ reduce using rule 22 (bun -> jukugo .) ]
+  ! NOTE            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! ERROR           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! WARNING         [ reduce using rule 22 (bun -> jukugo .) ]
+
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
+
+state 27
 
     (7) main -> main KAIGYO .
 
@@ -911,797 +1086,1079 @@ state 26
     WORDS           reduce using rule 7 (main -> main KAIGYO .)
     KIGO            reduce using rule 7 (main -> main KAIGYO .)
     NUMBER          reduce using rule 7 (main -> main KAIGYO .)
-    TEN             reduce using rule 7 (main -> main KAIGYO .)
-    CORON           reduce using rule 7 (main -> main KAIGYO .)
+    FUNCTION        reduce using rule 7 (main -> main KAIGYO .)
     MATCH           reduce using rule 7 (main -> main KAIGYO .)
     EXPE            reduce using rule 7 (main -> main KAIGYO .)
     UNDECLEAR       reduce using rule 7 (main -> main KAIGYO .)
+    TERMINATE       reduce using rule 7 (main -> main KAIGYO .)
+    UNDEFINE        reduce using rule 7 (main -> main KAIGYO .)
     NOTE            reduce using rule 7 (main -> main KAIGYO .)
     ERROR           reduce using rule 7 (main -> main KAIGYO .)
     WARNING         reduce using rule 7 (main -> main KAIGYO .)
-    LKAKU           reduce using rule 7 (main -> main KAIGYO .)
+    WTYPE           reduce using rule 7 (main -> main KAIGYO .)
+    TEN             reduce using rule 7 (main -> main KAIGYO .)
+    CORON           reduce using rule 7 (main -> main KAIGYO .)
     $end            reduce using rule 7 (main -> main KAIGYO .)
 
 
-state 27
+state 28
 
     (6) main -> placecouse sentence .
-    (16) sentence -> sentence . warning
-    (17) sentence -> sentence . sentence
-    (18) warning -> . LKAKU bun RKAKU
-    (15) sentence -> . bun
-    (16) sentence -> . sentence warning
-    (17) sentence -> . sentence sentence
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (18) sentence -> sentence . warning
+    (19) sentence -> sentence . sentence
+    (20) warning -> . WTYPE
+    (17) sentence -> . bun
+    (18) sentence -> . sentence warning
+    (19) sentence -> . sentence sentence
+    (21) bun -> .
+    (22) bun -> . jukugo
+    (23) bun -> . bun jukugo
+    (24) bun -> . bun TEN
+    (25) bun -> . jukugo TEN
+    (26) bun -> . bun CORON
+    (27) bun -> . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-  ! shift/reduce conflict for LKAKU resolved as shift
+  ! shift/reduce conflict for WTYPE resolved as shift
+  ! reduce/reduce conflict for TEN resolved using rule 6 (main -> placecouse sentence .)
+  ! reduce/reduce conflict for CORON resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for WORDS resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for KIGO resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for NUMBER resolved using rule 6 (main -> placecouse sentence .)
-  ! reduce/reduce conflict for TEN resolved using rule 6 (main -> placecouse sentence .)
-  ! reduce/reduce conflict for CORON resolved using rule 6 (main -> placecouse sentence .)
+  ! reduce/reduce conflict for FUNCTION resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for MATCH resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for EXPE resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for UNDECLEAR resolved using rule 6 (main -> placecouse sentence .)
+  ! reduce/reduce conflict for TERMINATE resolved using rule 6 (main -> placecouse sentence .)
+  ! reduce/reduce conflict for UNDEFINE resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for NOTE resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for ERROR resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for WARNING resolved using rule 6 (main -> placecouse sentence .)
-  ! shift/reduce conflict for LKAKU resolved as shift
+  ! shift/reduce conflict for WTYPE resolved as shift
   ! reduce/reduce conflict for KAIGYO resolved using rule 6 (main -> placecouse sentence .)
   ! reduce/reduce conflict for $end resolved using rule 6 (main -> placecouse sentence .)
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
     KAIGYO          reduce using rule 6 (main -> placecouse sentence .)
+    TEN             reduce using rule 6 (main -> placecouse sentence .)
+    CORON           reduce using rule 6 (main -> placecouse sentence .)
     $end            reduce using rule 6 (main -> placecouse sentence .)
-    LKAKU           shift and go to state 40
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    WTYPE           shift and go to state 43
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
   ! WORDS           [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! KIGO            [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! NUMBER          [ reduce using rule 6 (main -> placecouse sentence .) ]
-  ! TEN             [ reduce using rule 6 (main -> placecouse sentence .) ]
-  ! CORON           [ reduce using rule 6 (main -> placecouse sentence .) ]
+  ! FUNCTION        [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! MATCH           [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! EXPE            [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! UNDECLEAR       [ reduce using rule 6 (main -> placecouse sentence .) ]
+  ! TERMINATE       [ reduce using rule 6 (main -> placecouse sentence .) ]
+  ! UNDEFINE        [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! NOTE            [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! ERROR           [ reduce using rule 6 (main -> placecouse sentence .) ]
   ! WARNING         [ reduce using rule 6 (main -> placecouse sentence .) ]
-  ! LKAKU           [ reduce using rule 6 (main -> placecouse sentence .) ]
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
-  ! LKAKU           [ reduce using rule 19 (bun -> .) ]
-  ! KAIGYO          [ reduce using rule 19 (bun -> .) ]
-  ! $end            [ reduce using rule 19 (bun -> .) ]
+  ! WTYPE           [ reduce using rule 6 (main -> placecouse sentence .) ]
+  ! TEN             [ reduce using rule 21 (bun -> .) ]
+  ! CORON           [ reduce using rule 21 (bun -> .) ]
+  ! WORDS           [ reduce using rule 21 (bun -> .) ]
+  ! KIGO            [ reduce using rule 21 (bun -> .) ]
+  ! NUMBER          [ reduce using rule 21 (bun -> .) ]
+  ! FUNCTION        [ reduce using rule 21 (bun -> .) ]
+  ! MATCH           [ reduce using rule 21 (bun -> .) ]
+  ! EXPE            [ reduce using rule 21 (bun -> .) ]
+  ! UNDECLEAR       [ reduce using rule 21 (bun -> .) ]
+  ! TERMINATE       [ reduce using rule 21 (bun -> .) ]
+  ! UNDEFINE        [ reduce using rule 21 (bun -> .) ]
+  ! NOTE            [ reduce using rule 21 (bun -> .) ]
+  ! ERROR           [ reduce using rule 21 (bun -> .) ]
+  ! WARNING         [ reduce using rule 21 (bun -> .) ]
+  ! WTYPE           [ reduce using rule 21 (bun -> .) ]
+  ! KAIGYO          [ reduce using rule 21 (bun -> .) ]
+  ! $end            [ reduce using rule 21 (bun -> .) ]
 
-    sentence                       shift and go to state 37
-    warning                        shift and go to state 39
-    bun                            shift and go to state 24
-    jukugo                         shift and go to state 28
-    note                           shift and go to state 14
+    sentence                       shift and go to state 40
+    warning                        shift and go to state 42
+    bun                            shift and go to state 25
+    jukugo                         shift and go to state 29
+    note                           shift and go to state 12
 
-state 28
+state 29
 
-    (20) bun -> jukugo .
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (22) bun -> jukugo .
+    (25) bun -> jukugo . TEN
+    (27) bun -> jukugo . CORON
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
+  ! shift/reduce conflict for TEN resolved as shift
+  ! shift/reduce conflict for CORON resolved as shift
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    LKAKU           reduce using rule 20 (bun -> jukugo .)
-    KAIGYO          reduce using rule 20 (bun -> jukugo .)
-    $end            reduce using rule 20 (bun -> jukugo .)
-    RKAKU           reduce using rule 20 (bun -> jukugo .)
-    VAL             shift and go to state 36
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    WTYPE           reduce using rule 22 (bun -> jukugo .)
+    KAIGYO          reduce using rule 22 (bun -> jukugo .)
+    $end            reduce using rule 22 (bun -> jukugo .)
+    TEN             shift and go to state 49
+    CORON           shift and go to state 48
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! KIGO            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! NUMBER          [ reduce using rule 20 (bun -> jukugo .) ]
-  ! TEN             [ reduce using rule 20 (bun -> jukugo .) ]
-  ! CORON           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! MATCH           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! EXPE            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! UNDECLEAR       [ reduce using rule 20 (bun -> jukugo .) ]
-  ! NOTE            [ reduce using rule 20 (bun -> jukugo .) ]
-  ! ERROR           [ reduce using rule 20 (bun -> jukugo .) ]
-  ! WARNING         [ reduce using rule 20 (bun -> jukugo .) ]
+  ! TEN             [ reduce using rule 22 (bun -> jukugo .) ]
+  ! CORON           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! WORDS           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! KIGO            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! NUMBER          [ reduce using rule 22 (bun -> jukugo .) ]
+  ! FUNCTION        [ reduce using rule 22 (bun -> jukugo .) ]
+  ! MATCH           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! EXPE            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! UNDECLEAR       [ reduce using rule 22 (bun -> jukugo .) ]
+  ! TERMINATE       [ reduce using rule 22 (bun -> jukugo .) ]
+  ! UNDEFINE        [ reduce using rule 22 (bun -> jukugo .) ]
+  ! NOTE            [ reduce using rule 22 (bun -> jukugo .) ]
+  ! ERROR           [ reduce using rule 22 (bun -> jukugo .) ]
+  ! WARNING         [ reduce using rule 22 (bun -> jukugo .) ]
 
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
 
-state 29
+state 30
 
     (8) placecouse -> place couse .
 
     WORDS           reduce using rule 8 (placecouse -> place couse .)
     KIGO            reduce using rule 8 (placecouse -> place couse .)
     NUMBER          reduce using rule 8 (placecouse -> place couse .)
-    TEN             reduce using rule 8 (placecouse -> place couse .)
-    CORON           reduce using rule 8 (placecouse -> place couse .)
+    FUNCTION        reduce using rule 8 (placecouse -> place couse .)
     MATCH           reduce using rule 8 (placecouse -> place couse .)
     EXPE            reduce using rule 8 (placecouse -> place couse .)
     UNDECLEAR       reduce using rule 8 (placecouse -> place couse .)
+    TERMINATE       reduce using rule 8 (placecouse -> place couse .)
+    UNDEFINE        reduce using rule 8 (placecouse -> place couse .)
     NOTE            reduce using rule 8 (placecouse -> place couse .)
     ERROR           reduce using rule 8 (placecouse -> place couse .)
     WARNING         reduce using rule 8 (placecouse -> place couse .)
-    LKAKU           reduce using rule 8 (placecouse -> place couse .)
+    WTYPE           reduce using rule 8 (placecouse -> place couse .)
+    TEN             reduce using rule 8 (placecouse -> place couse .)
+    CORON           reduce using rule 8 (placecouse -> place couse .)
     KAIGYO          reduce using rule 8 (placecouse -> place couse .)
     $end            reduce using rule 8 (placecouse -> place couse .)
 
 
-state 30
-
-    (12) couse -> note . CORON
-
-    CORON           shift and go to state 42
-
-
 state 31
 
-    (9) place -> filename points .
+    (14) couse -> note . CORON
 
-    NOTE            reduce using rule 9 (place -> filename points .)
-    ERROR           reduce using rule 9 (place -> filename points .)
-    WARNING         reduce using rule 9 (place -> filename points .)
+    CORON           shift and go to state 50
 
 
 state 32
 
-    (10) points -> point . point
-    (11) point -> . NUMBER CORON
+    (11) place -> filename points .
 
-    NUMBER          shift and go to state 33
+    NOTE            reduce using rule 11 (place -> filename points .)
+    ERROR           reduce using rule 11 (place -> filename points .)
+    WARNING         reduce using rule 11 (place -> filename points .)
+    WORDS           reduce using rule 11 (place -> filename points .)
+    KIGO            reduce using rule 11 (place -> filename points .)
+    NUMBER          reduce using rule 11 (place -> filename points .)
+    FUNCTION        reduce using rule 11 (place -> filename points .)
+    MATCH           reduce using rule 11 (place -> filename points .)
+    EXPE            reduce using rule 11 (place -> filename points .)
+    UNDECLEAR       reduce using rule 11 (place -> filename points .)
+    TERMINATE       reduce using rule 11 (place -> filename points .)
+    UNDEFINE        reduce using rule 11 (place -> filename points .)
+    WTYPE           reduce using rule 11 (place -> filename points .)
+    TEN             reduce using rule 11 (place -> filename points .)
+    CORON           reduce using rule 11 (place -> filename points .)
+    KAIGYO          reduce using rule 11 (place -> filename points .)
+    $end            reduce using rule 11 (place -> filename points .)
 
-    point                          shift and go to state 43
 
 state 33
 
-    (11) point -> NUMBER . CORON
+    (12) points -> point . point
+    (13) point -> . NUMBER CORON
 
-    CORON           shift and go to state 44
+    NUMBER          shift and go to state 34
 
+    point                          shift and go to state 51
 
 state 34
 
-    (29) jukugo -> jukugo jukugo .
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (13) point -> NUMBER . CORON
+
+    CORON           shift and go to state 52
+
+
+state 35
+
+    (33) jukugo -> jukugo jukugo .
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
   ! shift/reduce conflict for VAL resolved as shift
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          reduce using rule 29 (jukugo -> jukugo jukugo .)
-    LKAKU           reduce using rule 29 (jukugo -> jukugo jukugo .)
-    $end            reduce using rule 29 (jukugo -> jukugo jukugo .)
-    RKAKU           reduce using rule 29 (jukugo -> jukugo jukugo .)
-    VAL             shift and go to state 36
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 33 (jukugo -> jukugo jukugo .)
+    CORON           reduce using rule 33 (jukugo -> jukugo jukugo .)
+    KAIGYO          reduce using rule 33 (jukugo -> jukugo jukugo .)
+    WTYPE           reduce using rule 33 (jukugo -> jukugo jukugo .)
+    $end            reduce using rule 33 (jukugo -> jukugo jukugo .)
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! TEN             [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! VAL             [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! WORDS           [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! KIGO            [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! NUMBER          [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! CORON           [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! MATCH           [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! EXPE            [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! UNDECLEAR       [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! NOTE            [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! ERROR           [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
-  ! WARNING         [ reduce using rule 29 (jukugo -> jukugo jukugo .) ]
+  ! VAL             [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! WORDS           [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! KIGO            [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! NUMBER          [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! FUNCTION        [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! MATCH           [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! EXPE            [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! UNDECLEAR       [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! TERMINATE       [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! UNDEFINE        [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! NOTE            [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! ERROR           [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
+  ! WARNING         [ reduce using rule 33 (jukugo -> jukugo jukugo .) ]
 
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
-
-state 35
-
-    (22) filename -> jukugo TEN . jukugo CORON
-    (26) jukugo -> TEN .
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
-
-  ! shift/reduce conflict for WORDS resolved as shift
-  ! shift/reduce conflict for KIGO resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
-  ! shift/reduce conflict for MATCH resolved as shift
-  ! shift/reduce conflict for EXPE resolved as shift
-  ! shift/reduce conflict for UNDECLEAR resolved as shift
-  ! shift/reduce conflict for NOTE resolved as shift
-  ! shift/reduce conflict for ERROR resolved as shift
-  ! shift/reduce conflict for WARNING resolved as shift
-    VAL             reduce using rule 26 (jukugo -> TEN .)
-    KAIGYO          reduce using rule 26 (jukugo -> TEN .)
-    LKAKU           reduce using rule 26 (jukugo -> TEN .)
-    $end            reduce using rule 26 (jukugo -> TEN .)
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
-
-  ! WORDS           [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! KIGO            [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! NUMBER          [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! TEN             [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! CORON           [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! MATCH           [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! EXPE            [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! UNDECLEAR       [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! NOTE            [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! ERROR           [ reduce using rule 26 (jukugo -> TEN .) ]
-  ! WARNING         [ reduce using rule 26 (jukugo -> TEN .) ]
-
-    jukugo                         shift and go to state 45
-    note                           shift and go to state 14
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
 
 state 36
 
-    (30) jukugo -> jukugo VAL .
+    (28) filename -> jukugo TEN . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    TEN             reduce using rule 30 (jukugo -> jukugo VAL .)
-    VAL             reduce using rule 30 (jukugo -> jukugo VAL .)
-    WORDS           reduce using rule 30 (jukugo -> jukugo VAL .)
-    KIGO            reduce using rule 30 (jukugo -> jukugo VAL .)
-    NUMBER          reduce using rule 30 (jukugo -> jukugo VAL .)
-    CORON           reduce using rule 30 (jukugo -> jukugo VAL .)
-    MATCH           reduce using rule 30 (jukugo -> jukugo VAL .)
-    EXPE            reduce using rule 30 (jukugo -> jukugo VAL .)
-    UNDECLEAR       reduce using rule 30 (jukugo -> jukugo VAL .)
-    NOTE            reduce using rule 30 (jukugo -> jukugo VAL .)
-    ERROR           reduce using rule 30 (jukugo -> jukugo VAL .)
-    WARNING         reduce using rule 30 (jukugo -> jukugo VAL .)
-    KAIGYO          reduce using rule 30 (jukugo -> jukugo VAL .)
-    LKAKU           reduce using rule 30 (jukugo -> jukugo VAL .)
-    $end            reduce using rule 30 (jukugo -> jukugo VAL .)
-    RKAKU           reduce using rule 30 (jukugo -> jukugo VAL .)
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
+    jukugo                         shift and go to state 53
+    note                           shift and go to state 12
 
 state 37
 
-    (17) sentence -> sentence sentence .
-    (16) sentence -> sentence . warning
-    (17) sentence -> sentence . sentence
-    (18) warning -> . LKAKU bun RKAKU
-    (15) sentence -> . bun
-    (16) sentence -> . sentence warning
-    (17) sentence -> . sentence sentence
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (34) jukugo -> jukugo VAL .
 
-  ! shift/reduce conflict for LKAKU resolved as shift
-  ! reduce/reduce conflict for WORDS resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for KIGO resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for NUMBER resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for TEN resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for CORON resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for MATCH resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for EXPE resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for UNDECLEAR resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for NOTE resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for ERROR resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for WARNING resolved using rule 17 (sentence -> sentence sentence .)
-  ! shift/reduce conflict for LKAKU resolved as shift
-  ! reduce/reduce conflict for KAIGYO resolved using rule 17 (sentence -> sentence sentence .)
-  ! reduce/reduce conflict for $end resolved using rule 17 (sentence -> sentence sentence .)
-  ! shift/reduce conflict for WORDS resolved as shift
-  ! shift/reduce conflict for KIGO resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
-  ! shift/reduce conflict for MATCH resolved as shift
-  ! shift/reduce conflict for EXPE resolved as shift
-  ! shift/reduce conflict for UNDECLEAR resolved as shift
-  ! shift/reduce conflict for NOTE resolved as shift
-  ! shift/reduce conflict for ERROR resolved as shift
-  ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          reduce using rule 17 (sentence -> sentence sentence .)
-    $end            reduce using rule 17 (sentence -> sentence sentence .)
-    LKAKU           shift and go to state 40
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 34 (jukugo -> jukugo VAL .)
+    VAL             reduce using rule 34 (jukugo -> jukugo VAL .)
+    WORDS           reduce using rule 34 (jukugo -> jukugo VAL .)
+    KIGO            reduce using rule 34 (jukugo -> jukugo VAL .)
+    NUMBER          reduce using rule 34 (jukugo -> jukugo VAL .)
+    FUNCTION        reduce using rule 34 (jukugo -> jukugo VAL .)
+    MATCH           reduce using rule 34 (jukugo -> jukugo VAL .)
+    EXPE            reduce using rule 34 (jukugo -> jukugo VAL .)
+    UNDECLEAR       reduce using rule 34 (jukugo -> jukugo VAL .)
+    TERMINATE       reduce using rule 34 (jukugo -> jukugo VAL .)
+    UNDEFINE        reduce using rule 34 (jukugo -> jukugo VAL .)
+    NOTE            reduce using rule 34 (jukugo -> jukugo VAL .)
+    ERROR           reduce using rule 34 (jukugo -> jukugo VAL .)
+    WARNING         reduce using rule 34 (jukugo -> jukugo VAL .)
+    CORON           reduce using rule 34 (jukugo -> jukugo VAL .)
+    KAIGYO          reduce using rule 34 (jukugo -> jukugo VAL .)
+    WTYPE           reduce using rule 34 (jukugo -> jukugo VAL .)
+    $end            reduce using rule 34 (jukugo -> jukugo VAL .)
 
-  ! LKAKU           [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! WORDS           [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! KIGO            [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! NUMBER          [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! TEN             [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! CORON           [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! MATCH           [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! EXPE            [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! UNDECLEAR       [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! NOTE            [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! ERROR           [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! WARNING         [ reduce using rule 17 (sentence -> sentence sentence .) ]
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
-  ! LKAKU           [ reduce using rule 19 (bun -> .) ]
-  ! KAIGYO          [ reduce using rule 19 (bun -> .) ]
-  ! $end            [ reduce using rule 19 (bun -> .) ]
-
-    sentence                       shift and go to state 37
-    warning                        shift and go to state 39
-    bun                            shift and go to state 24
-    jukugo                         shift and go to state 28
-    note                           shift and go to state 14
 
 state 38
 
-    (13) line -> sentence KAIGYO .
+    (38) jukugo -> UNDECLEAR jukugo . VAL
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    WORDS           reduce using rule 13 (line -> sentence KAIGYO .)
-    KIGO            reduce using rule 13 (line -> sentence KAIGYO .)
-    NUMBER          reduce using rule 13 (line -> sentence KAIGYO .)
-    TEN             reduce using rule 13 (line -> sentence KAIGYO .)
-    CORON           reduce using rule 13 (line -> sentence KAIGYO .)
-    MATCH           reduce using rule 13 (line -> sentence KAIGYO .)
-    EXPE            reduce using rule 13 (line -> sentence KAIGYO .)
-    UNDECLEAR       reduce using rule 13 (line -> sentence KAIGYO .)
-    NOTE            reduce using rule 13 (line -> sentence KAIGYO .)
-    ERROR           reduce using rule 13 (line -> sentence KAIGYO .)
-    WARNING         reduce using rule 13 (line -> sentence KAIGYO .)
-    KAIGYO          reduce using rule 13 (line -> sentence KAIGYO .)
-    LKAKU           reduce using rule 13 (line -> sentence KAIGYO .)
-    $end            reduce using rule 13 (line -> sentence KAIGYO .)
+    VAL             shift and go to state 54
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
 
 state 39
 
-    (16) sentence -> sentence warning .
+    (40) jukugo -> UNDEFINE WORDS . WORDS VAL
 
-    KAIGYO          reduce using rule 16 (sentence -> sentence warning .)
-    LKAKU           reduce using rule 16 (sentence -> sentence warning .)
-    WORDS           reduce using rule 16 (sentence -> sentence warning .)
-    KIGO            reduce using rule 16 (sentence -> sentence warning .)
-    NUMBER          reduce using rule 16 (sentence -> sentence warning .)
-    TEN             reduce using rule 16 (sentence -> sentence warning .)
-    CORON           reduce using rule 16 (sentence -> sentence warning .)
-    MATCH           reduce using rule 16 (sentence -> sentence warning .)
-    EXPE            reduce using rule 16 (sentence -> sentence warning .)
-    UNDECLEAR       reduce using rule 16 (sentence -> sentence warning .)
-    NOTE            reduce using rule 16 (sentence -> sentence warning .)
-    ERROR           reduce using rule 16 (sentence -> sentence warning .)
-    WARNING         reduce using rule 16 (sentence -> sentence warning .)
-    $end            reduce using rule 16 (sentence -> sentence warning .)
+    WORDS           shift and go to state 55
 
 
 state 40
 
-    (18) warning -> LKAKU . bun RKAKU
-    (19) bun -> .
-    (20) bun -> . jukugo
-    (21) bun -> . bun jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (19) sentence -> sentence sentence .
+    (18) sentence -> sentence . warning
+    (19) sentence -> sentence . sentence
+    (20) warning -> . WTYPE
+    (17) sentence -> . bun
+    (18) sentence -> . sentence warning
+    (19) sentence -> . sentence sentence
+    (21) bun -> .
+    (22) bun -> . jukugo
+    (23) bun -> . bun jukugo
+    (24) bun -> . bun TEN
+    (25) bun -> . jukugo TEN
+    (26) bun -> . bun CORON
+    (27) bun -> . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
+  ! shift/reduce conflict for WTYPE resolved as shift
+  ! reduce/reduce conflict for TEN resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for CORON resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for WORDS resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for KIGO resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for NUMBER resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for FUNCTION resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for MATCH resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for EXPE resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for UNDECLEAR resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for TERMINATE resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for UNDEFINE resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for NOTE resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for ERROR resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for WARNING resolved using rule 19 (sentence -> sentence sentence .)
+  ! shift/reduce conflict for WTYPE resolved as shift
+  ! reduce/reduce conflict for KAIGYO resolved using rule 19 (sentence -> sentence sentence .)
+  ! reduce/reduce conflict for $end resolved using rule 19 (sentence -> sentence sentence .)
   ! shift/reduce conflict for WORDS resolved as shift
   ! shift/reduce conflict for KIGO resolved as shift
   ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
   ! shift/reduce conflict for MATCH resolved as shift
   ! shift/reduce conflict for EXPE resolved as shift
   ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
   ! shift/reduce conflict for NOTE resolved as shift
   ! shift/reduce conflict for ERROR resolved as shift
   ! shift/reduce conflict for WARNING resolved as shift
-    RKAKU           reduce using rule 19 (bun -> .)
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    KAIGYO          reduce using rule 19 (sentence -> sentence sentence .)
+    TEN             reduce using rule 19 (sentence -> sentence sentence .)
+    CORON           reduce using rule 19 (sentence -> sentence sentence .)
+    $end            reduce using rule 19 (sentence -> sentence sentence .)
+    WTYPE           shift and go to state 43
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! WORDS           [ reduce using rule 19 (bun -> .) ]
-  ! KIGO            [ reduce using rule 19 (bun -> .) ]
-  ! NUMBER          [ reduce using rule 19 (bun -> .) ]
-  ! TEN             [ reduce using rule 19 (bun -> .) ]
-  ! CORON           [ reduce using rule 19 (bun -> .) ]
-  ! MATCH           [ reduce using rule 19 (bun -> .) ]
-  ! EXPE            [ reduce using rule 19 (bun -> .) ]
-  ! UNDECLEAR       [ reduce using rule 19 (bun -> .) ]
-  ! NOTE            [ reduce using rule 19 (bun -> .) ]
-  ! ERROR           [ reduce using rule 19 (bun -> .) ]
-  ! WARNING         [ reduce using rule 19 (bun -> .) ]
+  ! WTYPE           [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! WORDS           [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! KIGO            [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! NUMBER          [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! FUNCTION        [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! MATCH           [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! EXPE            [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! UNDECLEAR       [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! TERMINATE       [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! UNDEFINE        [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! NOTE            [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! ERROR           [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! WARNING         [ reduce using rule 19 (sentence -> sentence sentence .) ]
+  ! TEN             [ reduce using rule 21 (bun -> .) ]
+  ! CORON           [ reduce using rule 21 (bun -> .) ]
+  ! WORDS           [ reduce using rule 21 (bun -> .) ]
+  ! KIGO            [ reduce using rule 21 (bun -> .) ]
+  ! NUMBER          [ reduce using rule 21 (bun -> .) ]
+  ! FUNCTION        [ reduce using rule 21 (bun -> .) ]
+  ! MATCH           [ reduce using rule 21 (bun -> .) ]
+  ! EXPE            [ reduce using rule 21 (bun -> .) ]
+  ! UNDECLEAR       [ reduce using rule 21 (bun -> .) ]
+  ! TERMINATE       [ reduce using rule 21 (bun -> .) ]
+  ! UNDEFINE        [ reduce using rule 21 (bun -> .) ]
+  ! NOTE            [ reduce using rule 21 (bun -> .) ]
+  ! ERROR           [ reduce using rule 21 (bun -> .) ]
+  ! WARNING         [ reduce using rule 21 (bun -> .) ]
+  ! WTYPE           [ reduce using rule 21 (bun -> .) ]
+  ! KAIGYO          [ reduce using rule 21 (bun -> .) ]
+  ! $end            [ reduce using rule 21 (bun -> .) ]
 
-    bun                            shift and go to state 46
-    jukugo                         shift and go to state 28
-    note                           shift and go to state 14
+    sentence                       shift and go to state 40
+    warning                        shift and go to state 42
+    bun                            shift and go to state 25
+    jukugo                         shift and go to state 29
+    note                           shift and go to state 12
 
 state 41
 
-    (21) bun -> bun jukugo .
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (15) line -> sentence KAIGYO .
 
-  ! shift/reduce conflict for WORDS resolved as shift
-  ! shift/reduce conflict for KIGO resolved as shift
-  ! shift/reduce conflict for NUMBER resolved as shift
-  ! shift/reduce conflict for TEN resolved as shift
-  ! shift/reduce conflict for CORON resolved as shift
-  ! shift/reduce conflict for MATCH resolved as shift
-  ! shift/reduce conflict for EXPE resolved as shift
-  ! shift/reduce conflict for UNDECLEAR resolved as shift
-  ! shift/reduce conflict for NOTE resolved as shift
-  ! shift/reduce conflict for ERROR resolved as shift
-  ! shift/reduce conflict for WARNING resolved as shift
-    KAIGYO          reduce using rule 21 (bun -> bun jukugo .)
-    LKAKU           reduce using rule 21 (bun -> bun jukugo .)
-    $end            reduce using rule 21 (bun -> bun jukugo .)
-    RKAKU           reduce using rule 21 (bun -> bun jukugo .)
-    VAL             shift and go to state 36
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    WORDS           reduce using rule 15 (line -> sentence KAIGYO .)
+    KIGO            reduce using rule 15 (line -> sentence KAIGYO .)
+    NUMBER          reduce using rule 15 (line -> sentence KAIGYO .)
+    FUNCTION        reduce using rule 15 (line -> sentence KAIGYO .)
+    MATCH           reduce using rule 15 (line -> sentence KAIGYO .)
+    EXPE            reduce using rule 15 (line -> sentence KAIGYO .)
+    UNDECLEAR       reduce using rule 15 (line -> sentence KAIGYO .)
+    TERMINATE       reduce using rule 15 (line -> sentence KAIGYO .)
+    UNDEFINE        reduce using rule 15 (line -> sentence KAIGYO .)
+    NOTE            reduce using rule 15 (line -> sentence KAIGYO .)
+    ERROR           reduce using rule 15 (line -> sentence KAIGYO .)
+    WARNING         reduce using rule 15 (line -> sentence KAIGYO .)
+    KAIGYO          reduce using rule 15 (line -> sentence KAIGYO .)
+    WTYPE           reduce using rule 15 (line -> sentence KAIGYO .)
+    TEN             reduce using rule 15 (line -> sentence KAIGYO .)
+    CORON           reduce using rule 15 (line -> sentence KAIGYO .)
+    $end            reduce using rule 15 (line -> sentence KAIGYO .)
 
-  ! WORDS           [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! KIGO            [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! NUMBER          [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! TEN             [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! CORON           [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! MATCH           [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! EXPE            [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! UNDECLEAR       [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! NOTE            [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! ERROR           [ reduce using rule 21 (bun -> bun jukugo .) ]
-  ! WARNING         [ reduce using rule 21 (bun -> bun jukugo .) ]
-
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
 
 state 42
 
-    (12) couse -> note CORON .
+    (18) sentence -> sentence warning .
 
-    WORDS           reduce using rule 12 (couse -> note CORON .)
-    KIGO            reduce using rule 12 (couse -> note CORON .)
-    NUMBER          reduce using rule 12 (couse -> note CORON .)
-    TEN             reduce using rule 12 (couse -> note CORON .)
-    CORON           reduce using rule 12 (couse -> note CORON .)
-    MATCH           reduce using rule 12 (couse -> note CORON .)
-    EXPE            reduce using rule 12 (couse -> note CORON .)
-    UNDECLEAR       reduce using rule 12 (couse -> note CORON .)
-    NOTE            reduce using rule 12 (couse -> note CORON .)
-    ERROR           reduce using rule 12 (couse -> note CORON .)
-    WARNING         reduce using rule 12 (couse -> note CORON .)
-    LKAKU           reduce using rule 12 (couse -> note CORON .)
-    KAIGYO          reduce using rule 12 (couse -> note CORON .)
-    $end            reduce using rule 12 (couse -> note CORON .)
+    KAIGYO          reduce using rule 18 (sentence -> sentence warning .)
+    WTYPE           reduce using rule 18 (sentence -> sentence warning .)
+    WORDS           reduce using rule 18 (sentence -> sentence warning .)
+    KIGO            reduce using rule 18 (sentence -> sentence warning .)
+    NUMBER          reduce using rule 18 (sentence -> sentence warning .)
+    FUNCTION        reduce using rule 18 (sentence -> sentence warning .)
+    MATCH           reduce using rule 18 (sentence -> sentence warning .)
+    EXPE            reduce using rule 18 (sentence -> sentence warning .)
+    UNDECLEAR       reduce using rule 18 (sentence -> sentence warning .)
+    TERMINATE       reduce using rule 18 (sentence -> sentence warning .)
+    UNDEFINE        reduce using rule 18 (sentence -> sentence warning .)
+    NOTE            reduce using rule 18 (sentence -> sentence warning .)
+    ERROR           reduce using rule 18 (sentence -> sentence warning .)
+    WARNING         reduce using rule 18 (sentence -> sentence warning .)
+    TEN             reduce using rule 18 (sentence -> sentence warning .)
+    CORON           reduce using rule 18 (sentence -> sentence warning .)
+    $end            reduce using rule 18 (sentence -> sentence warning .)
 
 
 state 43
 
-    (10) points -> point point .
+    (20) warning -> WTYPE .
 
-    NOTE            reduce using rule 10 (points -> point point .)
-    ERROR           reduce using rule 10 (points -> point point .)
-    WARNING         reduce using rule 10 (points -> point point .)
+    KAIGYO          reduce using rule 20 (warning -> WTYPE .)
+    WTYPE           reduce using rule 20 (warning -> WTYPE .)
+    WORDS           reduce using rule 20 (warning -> WTYPE .)
+    KIGO            reduce using rule 20 (warning -> WTYPE .)
+    NUMBER          reduce using rule 20 (warning -> WTYPE .)
+    FUNCTION        reduce using rule 20 (warning -> WTYPE .)
+    MATCH           reduce using rule 20 (warning -> WTYPE .)
+    EXPE            reduce using rule 20 (warning -> WTYPE .)
+    UNDECLEAR       reduce using rule 20 (warning -> WTYPE .)
+    TERMINATE       reduce using rule 20 (warning -> WTYPE .)
+    UNDEFINE        reduce using rule 20 (warning -> WTYPE .)
+    NOTE            reduce using rule 20 (warning -> WTYPE .)
+    ERROR           reduce using rule 20 (warning -> WTYPE .)
+    WARNING         reduce using rule 20 (warning -> WTYPE .)
+    TEN             reduce using rule 20 (warning -> WTYPE .)
+    CORON           reduce using rule 20 (warning -> WTYPE .)
+    $end            reduce using rule 20 (warning -> WTYPE .)
 
 
 state 44
 
-    (11) point -> NUMBER CORON .
+    (23) bun -> bun jukugo .
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-    NUMBER          reduce using rule 11 (point -> NUMBER CORON .)
-    NOTE            reduce using rule 11 (point -> NUMBER CORON .)
-    ERROR           reduce using rule 11 (point -> NUMBER CORON .)
-    WARNING         reduce using rule 11 (point -> NUMBER CORON .)
+  ! shift/reduce conflict for WORDS resolved as shift
+  ! shift/reduce conflict for KIGO resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
+  ! shift/reduce conflict for MATCH resolved as shift
+  ! shift/reduce conflict for EXPE resolved as shift
+  ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
+  ! shift/reduce conflict for NOTE resolved as shift
+  ! shift/reduce conflict for ERROR resolved as shift
+  ! shift/reduce conflict for WARNING resolved as shift
+    TEN             reduce using rule 23 (bun -> bun jukugo .)
+    CORON           reduce using rule 23 (bun -> bun jukugo .)
+    KAIGYO          reduce using rule 23 (bun -> bun jukugo .)
+    WTYPE           reduce using rule 23 (bun -> bun jukugo .)
+    $end            reduce using rule 23 (bun -> bun jukugo .)
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
+  ! WORDS           [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! KIGO            [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! NUMBER          [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! FUNCTION        [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! MATCH           [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! EXPE            [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! UNDECLEAR       [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! TERMINATE       [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! UNDEFINE        [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! NOTE            [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! ERROR           [ reduce using rule 23 (bun -> bun jukugo .) ]
+  ! WARNING         [ reduce using rule 23 (bun -> bun jukugo .) ]
+
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
 
 state 45
 
-    (22) filename -> jukugo TEN jukugo . CORON
-    (29) jukugo -> jukugo . jukugo
-    (30) jukugo -> jukugo . VAL
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (24) bun -> bun TEN .
 
-    CORON           shift and go to state 47
-    VAL             shift and go to state 36
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 24 (bun -> bun TEN .)
+    CORON           reduce using rule 24 (bun -> bun TEN .)
+    WORDS           reduce using rule 24 (bun -> bun TEN .)
+    KIGO            reduce using rule 24 (bun -> bun TEN .)
+    NUMBER          reduce using rule 24 (bun -> bun TEN .)
+    FUNCTION        reduce using rule 24 (bun -> bun TEN .)
+    MATCH           reduce using rule 24 (bun -> bun TEN .)
+    EXPE            reduce using rule 24 (bun -> bun TEN .)
+    UNDECLEAR       reduce using rule 24 (bun -> bun TEN .)
+    TERMINATE       reduce using rule 24 (bun -> bun TEN .)
+    UNDEFINE        reduce using rule 24 (bun -> bun TEN .)
+    NOTE            reduce using rule 24 (bun -> bun TEN .)
+    ERROR           reduce using rule 24 (bun -> bun TEN .)
+    WARNING         reduce using rule 24 (bun -> bun TEN .)
+    KAIGYO          reduce using rule 24 (bun -> bun TEN .)
+    WTYPE           reduce using rule 24 (bun -> bun TEN .)
+    $end            reduce using rule 24 (bun -> bun TEN .)
 
-    jukugo                         shift and go to state 34
-    note                           shift and go to state 14
 
 state 46
 
-    (18) warning -> LKAKU bun . RKAKU
-    (21) bun -> bun . jukugo
-    (23) jukugo -> . WORDS
-    (24) jukugo -> . KIGO
-    (25) jukugo -> . NUMBER
-    (26) jukugo -> . TEN
-    (27) jukugo -> . note
-    (28) jukugo -> . CORON
-    (29) jukugo -> . jukugo jukugo
-    (30) jukugo -> . jukugo VAL
-    (31) jukugo -> . MATCH
-    (32) jukugo -> . EXPE
-    (33) jukugo -> . UNDECLEAR
-    (34) note -> . NOTE
-    (35) note -> . ERROR
-    (36) note -> . WARNING
+    (26) bun -> bun CORON .
 
-    RKAKU           shift and go to state 48
-    WORDS           shift and go to state 11
-    KIGO            shift and go to state 12
-    NUMBER          shift and go to state 13
-    TEN             shift and go to state 9
-    CORON           shift and go to state 10
-    MATCH           shift and go to state 15
-    EXPE            shift and go to state 16
-    UNDECLEAR       shift and go to state 17
-    NOTE            shift and go to state 18
-    ERROR           shift and go to state 19
-    WARNING         shift and go to state 20
+    TEN             reduce using rule 26 (bun -> bun CORON .)
+    CORON           reduce using rule 26 (bun -> bun CORON .)
+    WORDS           reduce using rule 26 (bun -> bun CORON .)
+    KIGO            reduce using rule 26 (bun -> bun CORON .)
+    NUMBER          reduce using rule 26 (bun -> bun CORON .)
+    FUNCTION        reduce using rule 26 (bun -> bun CORON .)
+    MATCH           reduce using rule 26 (bun -> bun CORON .)
+    EXPE            reduce using rule 26 (bun -> bun CORON .)
+    UNDECLEAR       reduce using rule 26 (bun -> bun CORON .)
+    TERMINATE       reduce using rule 26 (bun -> bun CORON .)
+    UNDEFINE        reduce using rule 26 (bun -> bun CORON .)
+    NOTE            reduce using rule 26 (bun -> bun CORON .)
+    ERROR           reduce using rule 26 (bun -> bun CORON .)
+    WARNING         reduce using rule 26 (bun -> bun CORON .)
+    KAIGYO          reduce using rule 26 (bun -> bun CORON .)
+    WTYPE           reduce using rule 26 (bun -> bun CORON .)
+    $end            reduce using rule 26 (bun -> bun CORON .)
 
-    jukugo                         shift and go to state 41
-    note                           shift and go to state 14
 
 state 47
 
-    (22) filename -> jukugo TEN jukugo CORON .
-    (28) jukugo -> CORON .
+    (25) bun -> jukugo TEN .
+    (28) filename -> jukugo TEN . jukugo CORON
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
 
-  ! reduce/reduce conflict for NUMBER resolved using rule 22 (filename -> jukugo TEN jukugo CORON .)
-    NUMBER          reduce using rule 22 (filename -> jukugo TEN jukugo CORON .)
-    VAL             reduce using rule 28 (jukugo -> CORON .)
-    WORDS           reduce using rule 28 (jukugo -> CORON .)
-    KIGO            reduce using rule 28 (jukugo -> CORON .)
-    TEN             reduce using rule 28 (jukugo -> CORON .)
-    CORON           reduce using rule 28 (jukugo -> CORON .)
-    MATCH           reduce using rule 28 (jukugo -> CORON .)
-    EXPE            reduce using rule 28 (jukugo -> CORON .)
-    UNDECLEAR       reduce using rule 28 (jukugo -> CORON .)
-    NOTE            reduce using rule 28 (jukugo -> CORON .)
-    ERROR           reduce using rule 28 (jukugo -> CORON .)
-    WARNING         reduce using rule 28 (jukugo -> CORON .)
+  ! shift/reduce conflict for WORDS resolved as shift
+  ! shift/reduce conflict for KIGO resolved as shift
+  ! shift/reduce conflict for NUMBER resolved as shift
+  ! shift/reduce conflict for FUNCTION resolved as shift
+  ! shift/reduce conflict for MATCH resolved as shift
+  ! shift/reduce conflict for EXPE resolved as shift
+  ! shift/reduce conflict for UNDECLEAR resolved as shift
+  ! shift/reduce conflict for TERMINATE resolved as shift
+  ! shift/reduce conflict for UNDEFINE resolved as shift
+  ! shift/reduce conflict for NOTE resolved as shift
+  ! shift/reduce conflict for ERROR resolved as shift
+  ! shift/reduce conflict for WARNING resolved as shift
+    TEN             reduce using rule 25 (bun -> jukugo TEN .)
+    CORON           reduce using rule 25 (bun -> jukugo TEN .)
+    KAIGYO          reduce using rule 25 (bun -> jukugo TEN .)
+    WTYPE           reduce using rule 25 (bun -> jukugo TEN .)
+    $end            reduce using rule 25 (bun -> jukugo TEN .)
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
 
-  ! NUMBER          [ reduce using rule 28 (jukugo -> CORON .) ]
+  ! WORDS           [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! KIGO            [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! NUMBER          [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! FUNCTION        [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! MATCH           [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! EXPE            [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! UNDECLEAR       [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! TERMINATE       [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! UNDEFINE        [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! NOTE            [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! ERROR           [ reduce using rule 25 (bun -> jukugo TEN .) ]
+  ! WARNING         [ reduce using rule 25 (bun -> jukugo TEN .) ]
 
+    jukugo                         shift and go to state 53
+    note                           shift and go to state 12
 
 state 48
 
-    (18) warning -> LKAKU bun RKAKU .
+    (27) bun -> jukugo CORON .
 
-    KAIGYO          reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    LKAKU           reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    WORDS           reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    KIGO            reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    NUMBER          reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    TEN             reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    CORON           reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    MATCH           reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    EXPE            reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    UNDECLEAR       reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    NOTE            reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    ERROR           reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    WARNING         reduce using rule 18 (warning -> LKAKU bun RKAKU .)
-    $end            reduce using rule 18 (warning -> LKAKU bun RKAKU .)
+    TEN             reduce using rule 27 (bun -> jukugo CORON .)
+    CORON           reduce using rule 27 (bun -> jukugo CORON .)
+    WORDS           reduce using rule 27 (bun -> jukugo CORON .)
+    KIGO            reduce using rule 27 (bun -> jukugo CORON .)
+    NUMBER          reduce using rule 27 (bun -> jukugo CORON .)
+    FUNCTION        reduce using rule 27 (bun -> jukugo CORON .)
+    MATCH           reduce using rule 27 (bun -> jukugo CORON .)
+    EXPE            reduce using rule 27 (bun -> jukugo CORON .)
+    UNDECLEAR       reduce using rule 27 (bun -> jukugo CORON .)
+    TERMINATE       reduce using rule 27 (bun -> jukugo CORON .)
+    UNDEFINE        reduce using rule 27 (bun -> jukugo CORON .)
+    NOTE            reduce using rule 27 (bun -> jukugo CORON .)
+    ERROR           reduce using rule 27 (bun -> jukugo CORON .)
+    WARNING         reduce using rule 27 (bun -> jukugo CORON .)
+    KAIGYO          reduce using rule 27 (bun -> jukugo CORON .)
+    WTYPE           reduce using rule 27 (bun -> jukugo CORON .)
+    $end            reduce using rule 27 (bun -> jukugo CORON .)
+
+
+state 49
+
+    (25) bun -> jukugo TEN .
+
+    TEN             reduce using rule 25 (bun -> jukugo TEN .)
+    CORON           reduce using rule 25 (bun -> jukugo TEN .)
+    WORDS           reduce using rule 25 (bun -> jukugo TEN .)
+    KIGO            reduce using rule 25 (bun -> jukugo TEN .)
+    NUMBER          reduce using rule 25 (bun -> jukugo TEN .)
+    FUNCTION        reduce using rule 25 (bun -> jukugo TEN .)
+    MATCH           reduce using rule 25 (bun -> jukugo TEN .)
+    EXPE            reduce using rule 25 (bun -> jukugo TEN .)
+    UNDECLEAR       reduce using rule 25 (bun -> jukugo TEN .)
+    TERMINATE       reduce using rule 25 (bun -> jukugo TEN .)
+    UNDEFINE        reduce using rule 25 (bun -> jukugo TEN .)
+    NOTE            reduce using rule 25 (bun -> jukugo TEN .)
+    ERROR           reduce using rule 25 (bun -> jukugo TEN .)
+    WARNING         reduce using rule 25 (bun -> jukugo TEN .)
+    WTYPE           reduce using rule 25 (bun -> jukugo TEN .)
+    KAIGYO          reduce using rule 25 (bun -> jukugo TEN .)
+    $end            reduce using rule 25 (bun -> jukugo TEN .)
+
+
+state 50
+
+    (14) couse -> note CORON .
+
+    WORDS           reduce using rule 14 (couse -> note CORON .)
+    KIGO            reduce using rule 14 (couse -> note CORON .)
+    NUMBER          reduce using rule 14 (couse -> note CORON .)
+    FUNCTION        reduce using rule 14 (couse -> note CORON .)
+    MATCH           reduce using rule 14 (couse -> note CORON .)
+    EXPE            reduce using rule 14 (couse -> note CORON .)
+    UNDECLEAR       reduce using rule 14 (couse -> note CORON .)
+    TERMINATE       reduce using rule 14 (couse -> note CORON .)
+    UNDEFINE        reduce using rule 14 (couse -> note CORON .)
+    NOTE            reduce using rule 14 (couse -> note CORON .)
+    ERROR           reduce using rule 14 (couse -> note CORON .)
+    WARNING         reduce using rule 14 (couse -> note CORON .)
+    WTYPE           reduce using rule 14 (couse -> note CORON .)
+    TEN             reduce using rule 14 (couse -> note CORON .)
+    CORON           reduce using rule 14 (couse -> note CORON .)
+    KAIGYO          reduce using rule 14 (couse -> note CORON .)
+    $end            reduce using rule 14 (couse -> note CORON .)
+
+
+state 51
+
+    (12) points -> point point .
+
+    NOTE            reduce using rule 12 (points -> point point .)
+    ERROR           reduce using rule 12 (points -> point point .)
+    WARNING         reduce using rule 12 (points -> point point .)
+    WORDS           reduce using rule 12 (points -> point point .)
+    KIGO            reduce using rule 12 (points -> point point .)
+    NUMBER          reduce using rule 12 (points -> point point .)
+    FUNCTION        reduce using rule 12 (points -> point point .)
+    MATCH           reduce using rule 12 (points -> point point .)
+    EXPE            reduce using rule 12 (points -> point point .)
+    UNDECLEAR       reduce using rule 12 (points -> point point .)
+    TERMINATE       reduce using rule 12 (points -> point point .)
+    UNDEFINE        reduce using rule 12 (points -> point point .)
+    WTYPE           reduce using rule 12 (points -> point point .)
+    TEN             reduce using rule 12 (points -> point point .)
+    CORON           reduce using rule 12 (points -> point point .)
+    KAIGYO          reduce using rule 12 (points -> point point .)
+    $end            reduce using rule 12 (points -> point point .)
+
+
+state 52
+
+    (13) point -> NUMBER CORON .
+
+    NUMBER          reduce using rule 13 (point -> NUMBER CORON .)
+    NOTE            reduce using rule 13 (point -> NUMBER CORON .)
+    ERROR           reduce using rule 13 (point -> NUMBER CORON .)
+    WARNING         reduce using rule 13 (point -> NUMBER CORON .)
+    WORDS           reduce using rule 13 (point -> NUMBER CORON .)
+    KIGO            reduce using rule 13 (point -> NUMBER CORON .)
+    FUNCTION        reduce using rule 13 (point -> NUMBER CORON .)
+    MATCH           reduce using rule 13 (point -> NUMBER CORON .)
+    EXPE            reduce using rule 13 (point -> NUMBER CORON .)
+    UNDECLEAR       reduce using rule 13 (point -> NUMBER CORON .)
+    TERMINATE       reduce using rule 13 (point -> NUMBER CORON .)
+    UNDEFINE        reduce using rule 13 (point -> NUMBER CORON .)
+    WTYPE           reduce using rule 13 (point -> NUMBER CORON .)
+    TEN             reduce using rule 13 (point -> NUMBER CORON .)
+    CORON           reduce using rule 13 (point -> NUMBER CORON .)
+    KAIGYO          reduce using rule 13 (point -> NUMBER CORON .)
+    $end            reduce using rule 13 (point -> NUMBER CORON .)
+
+
+state 53
+
+    (28) filename -> jukugo TEN jukugo . CORON
+    (33) jukugo -> jukugo . jukugo
+    (34) jukugo -> jukugo . VAL
+    (29) jukugo -> . WORDS
+    (30) jukugo -> . KIGO
+    (31) jukugo -> . NUMBER
+    (32) jukugo -> . note
+    (33) jukugo -> . jukugo jukugo
+    (34) jukugo -> . jukugo VAL
+    (35) jukugo -> . FUNCTION
+    (36) jukugo -> . MATCH
+    (37) jukugo -> . EXPE
+    (38) jukugo -> . UNDECLEAR jukugo VAL
+    (39) jukugo -> . TERMINATE
+    (40) jukugo -> . UNDEFINE WORDS WORDS VAL
+    (41) note -> . NOTE
+    (42) note -> . ERROR
+    (43) note -> . WARNING
+
+    CORON           shift and go to state 56
+    VAL             shift and go to state 37
+    WORDS           shift and go to state 9
+    KIGO            shift and go to state 10
+    NUMBER          shift and go to state 11
+    FUNCTION        shift and go to state 13
+    MATCH           shift and go to state 14
+    EXPE            shift and go to state 15
+    UNDECLEAR       shift and go to state 16
+    TERMINATE       shift and go to state 17
+    UNDEFINE        shift and go to state 18
+    NOTE            shift and go to state 19
+    ERROR           shift and go to state 20
+    WARNING         shift and go to state 21
+
+    jukugo                         shift and go to state 35
+    note                           shift and go to state 12
+
+state 54
+
+    (38) jukugo -> UNDECLEAR jukugo VAL .
+    (34) jukugo -> jukugo VAL .
+
+  ! reduce/reduce conflict for VAL resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for WORDS resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for KIGO resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for NUMBER resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for FUNCTION resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for MATCH resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for EXPE resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for UNDECLEAR resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for TERMINATE resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for UNDEFINE resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for NOTE resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for ERROR resolved using rule 34 (jukugo -> jukugo VAL .)
+  ! reduce/reduce conflict for WARNING resolved using rule 34 (jukugo -> jukugo VAL .)
+    TEN             reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .)
+    CORON           reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .)
+    KAIGYO          reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .)
+    WTYPE           reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .)
+    $end            reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .)
+    VAL             reduce using rule 34 (jukugo -> jukugo VAL .)
+    WORDS           reduce using rule 34 (jukugo -> jukugo VAL .)
+    KIGO            reduce using rule 34 (jukugo -> jukugo VAL .)
+    NUMBER          reduce using rule 34 (jukugo -> jukugo VAL .)
+    FUNCTION        reduce using rule 34 (jukugo -> jukugo VAL .)
+    MATCH           reduce using rule 34 (jukugo -> jukugo VAL .)
+    EXPE            reduce using rule 34 (jukugo -> jukugo VAL .)
+    UNDECLEAR       reduce using rule 34 (jukugo -> jukugo VAL .)
+    TERMINATE       reduce using rule 34 (jukugo -> jukugo VAL .)
+    UNDEFINE        reduce using rule 34 (jukugo -> jukugo VAL .)
+    NOTE            reduce using rule 34 (jukugo -> jukugo VAL .)
+    ERROR           reduce using rule 34 (jukugo -> jukugo VAL .)
+    WARNING         reduce using rule 34 (jukugo -> jukugo VAL .)
+
+  ! VAL             [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! WORDS           [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! KIGO            [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! NUMBER          [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! FUNCTION        [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! MATCH           [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! EXPE            [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! UNDECLEAR       [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! TERMINATE       [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! UNDEFINE        [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! NOTE            [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! ERROR           [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+  ! WARNING         [ reduce using rule 38 (jukugo -> UNDECLEAR jukugo VAL .) ]
+
+
+state 55
+
+    (40) jukugo -> UNDEFINE WORDS WORDS . VAL
+
+    VAL             shift and go to state 57
+
+
+state 56
+
+    (28) filename -> jukugo TEN jukugo CORON .
+
+    NUMBER          reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    WORDS           reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    KIGO            reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    FUNCTION        reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    MATCH           reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    EXPE            reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    UNDECLEAR       reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    TERMINATE       reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    UNDEFINE        reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    NOTE            reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    ERROR           reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    WARNING         reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    WTYPE           reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    TEN             reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    CORON           reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    KAIGYO          reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+    $end            reduce using rule 28 (filename -> jukugo TEN jukugo CORON .)
+
+
+state 57
+
+    (40) jukugo -> UNDEFINE WORDS WORDS VAL .
+
+    TEN             reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    VAL             reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    WORDS           reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    KIGO            reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    NUMBER          reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    FUNCTION        reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    MATCH           reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    EXPE            reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    UNDECLEAR       reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    TERMINATE       reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    UNDEFINE        reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    NOTE            reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    ERROR           reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    WARNING         reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    CORON           reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    KAIGYO          reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    WTYPE           reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
+    $end            reduce using rule 40 (jukugo -> UNDEFINE WORDS WORDS VAL .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -1709,11 +2166,12 @@ WARNING:
 WARNING: shift/reduce conflict for WORDS in state 3 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 3 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 3 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 3 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 3 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 3 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 3 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 3 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 3 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 3 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 3 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 3 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 3 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 3 resolved as shift
@@ -1721,140 +2179,149 @@ WARNING: shift/reduce conflict for KAIGYO in state 4 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 5 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 5 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 5 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 5 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 5 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 5 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 5 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 5 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 5 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 5 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 5 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 5 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 5 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 5 resolved as shift
-WARNING: shift/reduce conflict for KAIGYO in state 23 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 23 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 23 resolved as shift
-WARNING: shift/reduce conflict for KAIGYO in state 23 resolved as shift
-WARNING: shift/reduce conflict for WORDS in state 23 resolved as shift
-WARNING: shift/reduce conflict for KIGO in state 23 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 23 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 23 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 23 resolved as shift
-WARNING: shift/reduce conflict for MATCH in state 23 resolved as shift
-WARNING: shift/reduce conflict for EXPE in state 23 resolved as shift
-WARNING: shift/reduce conflict for UNDECLEAR in state 23 resolved as shift
-WARNING: shift/reduce conflict for NOTE in state 23 resolved as shift
-WARNING: shift/reduce conflict for ERROR in state 23 resolved as shift
-WARNING: shift/reduce conflict for WARNING in state 23 resolved as shift
+WARNING: shift/reduce conflict for NOTE in state 6 resolved as shift
+WARNING: shift/reduce conflict for ERROR in state 6 resolved as shift
+WARNING: shift/reduce conflict for WARNING in state 6 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 7 resolved as shift
+WARNING: shift/reduce conflict for KAIGYO in state 24 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 24 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 24 resolved as shift
+WARNING: shift/reduce conflict for KAIGYO in state 24 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 24 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 24 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 24 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 24 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 24 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 24 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 24 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 24 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 24 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 24 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 24 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 24 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 24 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 24 resolved as shift
 WARNING: shift/reduce conflict for TEN in state 25 resolved as shift
+WARNING: shift/reduce conflict for CORON in state 25 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 25 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 25 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 25 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 25 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 25 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 25 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 25 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 25 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 25 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 25 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 25 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 25 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 25 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 27 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 27 resolved as shift
-WARNING: shift/reduce conflict for WORDS in state 27 resolved as shift
-WARNING: shift/reduce conflict for KIGO in state 27 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 27 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 27 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 27 resolved as shift
-WARNING: shift/reduce conflict for MATCH in state 27 resolved as shift
-WARNING: shift/reduce conflict for EXPE in state 27 resolved as shift
-WARNING: shift/reduce conflict for UNDECLEAR in state 27 resolved as shift
-WARNING: shift/reduce conflict for NOTE in state 27 resolved as shift
-WARNING: shift/reduce conflict for ERROR in state 27 resolved as shift
-WARNING: shift/reduce conflict for WARNING in state 27 resolved as shift
+WARNING: shift/reduce conflict for TEN in state 26 resolved as shift
+WARNING: shift/reduce conflict for CORON in state 26 resolved as shift
+WARNING: shift/reduce conflict for WORDS in state 26 resolved as shift
+WARNING: shift/reduce conflict for KIGO in state 26 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 26 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 26 resolved as shift
+WARNING: shift/reduce conflict for MATCH in state 26 resolved as shift
+WARNING: shift/reduce conflict for EXPE in state 26 resolved as shift
+WARNING: shift/reduce conflict for UNDECLEAR in state 26 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 26 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 26 resolved as shift
+WARNING: shift/reduce conflict for NOTE in state 26 resolved as shift
+WARNING: shift/reduce conflict for ERROR in state 26 resolved as shift
+WARNING: shift/reduce conflict for WARNING in state 26 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 28 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 28 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 28 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 28 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 28 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 28 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 28 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 28 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 28 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 28 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 28 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 28 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 28 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 28 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 28 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 28 resolved as shift
-WARNING: shift/reduce conflict for VAL in state 34 resolved as shift
-WARNING: shift/reduce conflict for WORDS in state 34 resolved as shift
-WARNING: shift/reduce conflict for KIGO in state 34 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 34 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 34 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 34 resolved as shift
-WARNING: shift/reduce conflict for MATCH in state 34 resolved as shift
-WARNING: shift/reduce conflict for EXPE in state 34 resolved as shift
-WARNING: shift/reduce conflict for UNDECLEAR in state 34 resolved as shift
-WARNING: shift/reduce conflict for NOTE in state 34 resolved as shift
-WARNING: shift/reduce conflict for ERROR in state 34 resolved as shift
-WARNING: shift/reduce conflict for WARNING in state 34 resolved as shift
+WARNING: shift/reduce conflict for TEN in state 29 resolved as shift
+WARNING: shift/reduce conflict for CORON in state 29 resolved as shift
+WARNING: shift/reduce conflict for WORDS in state 29 resolved as shift
+WARNING: shift/reduce conflict for KIGO in state 29 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 29 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 29 resolved as shift
+WARNING: shift/reduce conflict for MATCH in state 29 resolved as shift
+WARNING: shift/reduce conflict for EXPE in state 29 resolved as shift
+WARNING: shift/reduce conflict for UNDECLEAR in state 29 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 29 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 29 resolved as shift
+WARNING: shift/reduce conflict for NOTE in state 29 resolved as shift
+WARNING: shift/reduce conflict for ERROR in state 29 resolved as shift
+WARNING: shift/reduce conflict for WARNING in state 29 resolved as shift
+WARNING: shift/reduce conflict for VAL in state 35 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 35 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 35 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 35 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 35 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 35 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 35 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 35 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 35 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 35 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 35 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 35 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 35 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 35 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 35 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 37 resolved as shift
-WARNING: shift/reduce conflict for LKAKU in state 37 resolved as shift
-WARNING: shift/reduce conflict for WORDS in state 37 resolved as shift
-WARNING: shift/reduce conflict for KIGO in state 37 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 37 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 37 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 37 resolved as shift
-WARNING: shift/reduce conflict for MATCH in state 37 resolved as shift
-WARNING: shift/reduce conflict for EXPE in state 37 resolved as shift
-WARNING: shift/reduce conflict for UNDECLEAR in state 37 resolved as shift
-WARNING: shift/reduce conflict for NOTE in state 37 resolved as shift
-WARNING: shift/reduce conflict for ERROR in state 37 resolved as shift
-WARNING: shift/reduce conflict for WARNING in state 37 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 40 resolved as shift
+WARNING: shift/reduce conflict for WTYPE in state 40 resolved as shift
 WARNING: shift/reduce conflict for WORDS in state 40 resolved as shift
 WARNING: shift/reduce conflict for KIGO in state 40 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 40 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 40 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 40 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 40 resolved as shift
 WARNING: shift/reduce conflict for MATCH in state 40 resolved as shift
 WARNING: shift/reduce conflict for EXPE in state 40 resolved as shift
 WARNING: shift/reduce conflict for UNDECLEAR in state 40 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 40 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 40 resolved as shift
 WARNING: shift/reduce conflict for NOTE in state 40 resolved as shift
 WARNING: shift/reduce conflict for ERROR in state 40 resolved as shift
 WARNING: shift/reduce conflict for WARNING in state 40 resolved as shift
-WARNING: shift/reduce conflict for WORDS in state 41 resolved as shift
-WARNING: shift/reduce conflict for KIGO in state 41 resolved as shift
-WARNING: shift/reduce conflict for NUMBER in state 41 resolved as shift
-WARNING: shift/reduce conflict for TEN in state 41 resolved as shift
-WARNING: shift/reduce conflict for CORON in state 41 resolved as shift
-WARNING: shift/reduce conflict for MATCH in state 41 resolved as shift
-WARNING: shift/reduce conflict for EXPE in state 41 resolved as shift
-WARNING: shift/reduce conflict for UNDECLEAR in state 41 resolved as shift
-WARNING: shift/reduce conflict for NOTE in state 41 resolved as shift
-WARNING: shift/reduce conflict for ERROR in state 41 resolved as shift
-WARNING: shift/reduce conflict for WARNING in state 41 resolved as shift
+WARNING: shift/reduce conflict for WORDS in state 44 resolved as shift
+WARNING: shift/reduce conflict for KIGO in state 44 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 44 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 44 resolved as shift
+WARNING: shift/reduce conflict for MATCH in state 44 resolved as shift
+WARNING: shift/reduce conflict for EXPE in state 44 resolved as shift
+WARNING: shift/reduce conflict for UNDECLEAR in state 44 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 44 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 44 resolved as shift
+WARNING: shift/reduce conflict for NOTE in state 44 resolved as shift
+WARNING: shift/reduce conflict for ERROR in state 44 resolved as shift
+WARNING: shift/reduce conflict for WARNING in state 44 resolved as shift
+WARNING: shift/reduce conflict for WORDS in state 47 resolved as shift
+WARNING: shift/reduce conflict for KIGO in state 47 resolved as shift
+WARNING: shift/reduce conflict for NUMBER in state 47 resolved as shift
+WARNING: shift/reduce conflict for FUNCTION in state 47 resolved as shift
+WARNING: shift/reduce conflict for MATCH in state 47 resolved as shift
+WARNING: shift/reduce conflict for EXPE in state 47 resolved as shift
+WARNING: shift/reduce conflict for UNDECLEAR in state 47 resolved as shift
+WARNING: shift/reduce conflict for TERMINATE in state 47 resolved as shift
+WARNING: shift/reduce conflict for UNDEFINE in state 47 resolved as shift
+WARNING: shift/reduce conflict for NOTE in state 47 resolved as shift
+WARNING: shift/reduce conflict for ERROR in state 47 resolved as shift
+WARNING: shift/reduce conflict for WARNING in state 47 resolved as shift
 WARNING: reduce/reduce conflict in state 3 resolved using rule (allbefore -> lines)
 WARNING: rejected rule (bun -> <empty>) in state 3
-WARNING: reduce/reduce conflict in state 23 resolved using rule (line -> sentence)
-WARNING: rejected rule (bun -> <empty>) in state 23
-WARNING: reduce/reduce conflict in state 27 resolved using rule (main -> placecouse sentence)
-WARNING: rejected rule (bun -> <empty>) in state 27
-WARNING: reduce/reduce conflict in state 37 resolved using rule (sentence -> sentence sentence)
-WARNING: rejected rule (bun -> <empty>) in state 37
-WARNING: reduce/reduce conflict in state 47 resolved using rule (filename -> jukugo TEN jukugo CORON)
-WARNING: rejected rule (jukugo -> CORON) in state 47
+WARNING: reduce/reduce conflict in state 24 resolved using rule (line -> sentence)
+WARNING: rejected rule (bun -> <empty>) in state 24
+WARNING: reduce/reduce conflict in state 28 resolved using rule (main -> placecouse sentence)
+WARNING: rejected rule (bun -> <empty>) in state 28
+WARNING: reduce/reduce conflict in state 40 resolved using rule (sentence -> sentence sentence)
+WARNING: rejected rule (bun -> <empty>) in state 40
+WARNING: reduce/reduce conflict in state 54 resolved using rule (jukugo -> jukugo VAL)
+WARNING: rejected rule (jukugo -> UNDECLEAR jukugo VAL) in state 54
